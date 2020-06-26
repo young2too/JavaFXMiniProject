@@ -16,7 +16,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class CommonServiceImpl implements CommonService{
+public class CommonServiceImpl implements CommonService {
+	Parent root2;
 
 	@Override
 	public void WindowClose(ActionEvent event) {
@@ -30,20 +31,20 @@ public class CommonServiceImpl implements CommonService{
 	public Parent showWindow(Stage s, String formPath) {
 		// TODO Auto-generated method stub
 		FXMLLoader loader = new FXMLLoader(getClass().getResource(formPath));
-		Parent root = null;
+		root2 = null;
 
 		try {
-			root = loader.load();
-			s.setScene(new Scene(root));
+			root2 = loader.load();
+			s.setScene(new Scene(root2));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		Controller ctrler = loader.getController();
-		ctrler.setRoot(root);
+		ctrler.setRoot(root2);
 
 		s.show();
-		return root;
+		return root2;
 	}
 
 	@Override
@@ -81,6 +82,24 @@ public class CommonServiceImpl implements CommonService{
 	}
 
 	@Override
+	public boolean isEmpty(Map<String, TextField> txtFldMap, String[] txtFldArr, String[] list) {
+		// TODO Auto-generated method stub
+		CommonService comSrv = new CommonServiceImpl();
+		int cnt = 0;
+		for (String txtFldId : txtFldArr) {
+			TextField txtFld = txtFldMap.get(txtFldId);
+
+			if (txtFld.getText().isEmpty()) {
+				txtFld.requestFocus();
+				comSrv.alertWindow("에러", (list[cnt] + "이(가) 비었습니다."),AlertType.ERROR );
+				return true;
+			}
+			cnt++;
+		}
+		return false;
+	}
+
+	@Override
 	public void WindowClose(Parent root) {
 		// TODO Auto-generated method stub
 		Stage stage = (Stage) root.getScene().getWindow();
@@ -90,13 +109,13 @@ public class CommonServiceImpl implements CommonService{
 	@Override
 	public void setMouserBtnCursurEffect(Button btn) {
 		// TODO Auto-generated method stub
-		btn.setOnMouseEntered(e->{
+		btn.setOnMouseEntered(e -> {
 			btn.setCursor(Cursor.HAND);
 		});
-		btn.setOnMouseExited(e->{
+		btn.setOnMouseExited(e -> {
 			btn.setCursor(Cursor.DEFAULT);
 		});
-		
+
 	}
 
 }

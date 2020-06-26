@@ -20,4 +20,5 @@ public interface CommonService {
 	public boolean isEmpty(Map<String, TextField> txtFldMap, String[] txtFldArr);
 	
 	public void setMouserBtnCursurEffect(Button btn);
+	boolean isEmpty(Map<String, TextField> txtFldMap, String[] txtFldArr, String[] list);
 }
