@@ -7,6 +7,7 @@ import CommonService.CommonServiceImpl;
 import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 
@@ -79,7 +80,8 @@ public class UpdateMyInfoServiceImpl implements UpdateMyInfoService{
 		}
 		
 		System.out.println("다 입력했으니 DB에 등록하면 됨");
-		
+		comSrv.WindowClose(updateMyInfoForm);
+		comSrv.showWindow(new Stage(), "../MyInfo/MyInfo.fxml");
 	}
 
 	@Override

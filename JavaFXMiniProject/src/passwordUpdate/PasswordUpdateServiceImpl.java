@@ -23,7 +23,9 @@ public class PasswordUpdateServiceImpl implements PasswordUpdateService{
 			return;
 		}
 		else if(comparePW(passwordUpdateForm)) {
+			System.out.println(comparePW(passwordUpdateForm));
 			comSrv.alertWindow("에러", "비밀번호가 일치하지 않습니다", AlertType.ERROR);
+			return;
 		}
 		System.out.println("다 입력했으니 DB에 등록하면 됨");
 	}
@@ -37,10 +39,10 @@ public class PasswordUpdateServiceImpl implements PasswordUpdateService{
 		System.out.println("oldPw를 DB에서 찾아와서 비교하는 곳");
 		
 		if(newPwTxt.getText().equals(newPwOkTxt.getText())) {
-			return true;
+			return false;
 		}
 		else
-			return false;
+			return true;
 	}
 
 }
