@@ -25,6 +25,7 @@
                      </HBox.margin>
                   </Label>
                   <TextField fx:id="newNickTxt" disable="true" promptText="현재 닉네임" translateX="20.0" />
+                  <Button disable="true" onAction="#overlapNickBtnAction" fx:id="overlapBtnNick" mnemonicParsing="false" text="중복확인" translateX="33.0" />
                   <CheckBox fx:id="newNickCheckBox" mnemonicParsing="false" text="닉네임 변경" translateX="40.0" />
                </children>
             </HBox>
@@ -39,23 +40,23 @@
                      </padding>
                   </Label>
                   <TextField fx:id="newIDTxt" disable="true" promptText="현재 아이디" translateX="53.0" />
-                  <Button onAction="#overlapBtnAction" fx:id="overlapBtn" mnemonicParsing="false" text="중복확인" translateX="70.0" />
+                  <Button disable="true" fx:id="overlapBtn" mnemonicParsing="false" onAction="#overlapBtnAction" text="중복확인" translateX="70.0" />
                   <CheckBox fx:id="newIDCheckBox" mnemonicParsing="false" text="ID 변경" translateX="85.0" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="NEVER">
                <children>
-                  <Button onAction="#confirmBtnAction" fx:id="confirmBtn" mnemonicParsing="false" text="확인">
+                  <Button fx:id="confirmBtn" mnemonicParsing="false" onAction="#confirmBtnAction" text="확인">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button onAction="#cancelBtnAction" fx:id="cancelBtn" mnemonicParsing="false" text="취소">
+                  <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#cancelBtnAction" text="취소">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button  onAction="#passwordUpdateBtnAction" fx:id="passwordUpdateBtn" mnemonicParsing="false" text="비밀번호 수정">
+                  <Button fx:id="passwordUpdateBtn" mnemonicParsing="false" onAction="#passwordUpdateBtnAction" text="비밀번호 수정">
                      <font>
                         <Font size="14.0" />
                      </font>
