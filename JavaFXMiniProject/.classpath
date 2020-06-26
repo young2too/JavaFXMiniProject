@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="C:/Users/LYG/Desktop/JavaFX 미니 프로젝트/ojdbc6.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

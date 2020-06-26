@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+               <children>
+                  <Label text="닉네임">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Label>
+                  <Label fx:id="myNickLabel" text="내 닉네임" translateX="50.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+               <children>
+                  <Label text="ID">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="myIDLabel" text="내 아이디" translateX="80.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+               <children>
+                  <Label text="내 점수">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="myScoreLabel" text="내 점수" translateX="43.0">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="NEVER">
+               <children>
+                  <Label text="랭킹">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                  </Label>
+                  <Label fx:id="myRankingLabel" text="내 랭킹" translateX="70.0" HBox.hgrow="NEVER">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="30.0" VBox.vgrow="NEVER">
+               <children>
+                  <Button fx:id="confirmBtn" mnemonicParsing="false" text="확인">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="myInfoUpdateBtn" mnemonicParsing="false" text="내정보수정">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </center>
+   <top>
+      <Label text="내 정보" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Magic R" size="22.0" />
+         </font>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
+         <graphic>
+            <ImageView fx:id="backImgBtn" fitHeight="46.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true" translateX="-50.0" />
+         </graphic>
+      </Label>
+   </top>
+</BorderPane>
