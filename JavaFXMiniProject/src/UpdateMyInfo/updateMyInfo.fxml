@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UpdateMyInfo.UpdateMyInfoController">
    <center>
       <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
          <children>
@@ -66,16 +66,26 @@
       </VBox>
    </center>
    <top>
-      <Label text="내 정보 수정" BorderPane.alignment="CENTER">
-         <font>
-            <Font name="Magic R" size="22.0" />
-         </font>
-         <padding>
-            <Insets top="10.0" />
-         </padding>
-         <graphic>
-            <ImageView fx:id="backImgBtn" fitHeight="49.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true" translateX="-55.0" />
-         </graphic>
-      </Label>
+      <HBox prefHeight="44.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="backImgBtn" mnemonicParsing="false">
+               <graphic>
+                  <ImageView fitHeight="54.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/돌아가기.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Label text="내 정보 수정" translateX="70.0">
+               <font>
+                  <Font name="Magic R" size="22.0" />
+               </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
    </top>
 </BorderPane>

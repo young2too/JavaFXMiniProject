@@ -6,11 +6,14 @@ import java.util.Map;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class CommonServiceImpl implements CommonService{
@@ -82,6 +85,17 @@ public class CommonServiceImpl implements CommonService{
 		// TODO Auto-generated method stub
 		Stage stage = (Stage) root.getScene().getWindow();
 		stage.close();
+	}
+
+	@Override
+	public void setMouserBtnCursurEffect(Button btn) {
+		// TODO Auto-generated method stub
+		btn.setOnMouseEntered(e->{
+			btn.setCursor(Cursor.HAND);
+		});
+		btn.setOnMouseExited(e->{
+			btn.setCursor(Cursor.DEFAULT);
+		});
 	}
 
 }
