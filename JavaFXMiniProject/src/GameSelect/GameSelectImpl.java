@@ -37,7 +37,7 @@ public class GameSelectImpl implements GameSelectService{
 		// TODO Auto-generated method stub
 		CommonService comSrv = new CommonServiceImpl();
 		Stage rankForm = new Stage();
-		Parent form = comSrv.showWindow(rankForm, "../Rank/RankScene.fxml");
+		Parent form = comSrv.showWindow(rankForm, "/Rank/RankScene.fxml");
 		return form;
 	}
 
@@ -45,7 +45,7 @@ public class GameSelectImpl implements GameSelectService{
 	public Parent OpenMyInfoForm() {
 		CommonService comSrv = new CommonServiceImpl();
 		Stage MyInfo = new Stage();
-		Parent form = comSrv.showWindow(MyInfo, "../MyInfo/MyInfo.fxml");
+		Parent form = comSrv.showWindow(MyInfo, "/MyInfo/MyInfo.fxml");
 		return form;
 		// TODO Auto-generated method stub
 		
