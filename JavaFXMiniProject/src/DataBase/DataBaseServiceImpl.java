@@ -107,9 +107,10 @@ public class DataBaseServiceImpl implements DataBaseService {
 	@Override
 	public ArrayList<Member> select() {
 		ArrayList<Member> resultList = new ArrayList<Member>();
-		try {
+		try {//
 			conn = DriverManager.getConnection(URL, USER, PASS);
-			String sql = "select * from member";
+			String sql = "select * from member order by desc"
+					+ "";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 
