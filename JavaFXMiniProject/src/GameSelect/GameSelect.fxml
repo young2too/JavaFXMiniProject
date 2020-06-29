@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.image.*?>
@@ -7,75 +8,99 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="714.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="714.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameSelect.GameSelectController">
   <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
     <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="368.0" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
     <RowConstraints maxHeight="296.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="296.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="147.0" minHeight="6.0" prefHeight="40.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <ImageView fitHeight="300.0" fitWidth="120.0" pickOnBounds="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <image>
-            <Image url="@img/피하기.png" />
-         </image>
+      <Button fx:id="numbaseBtn" disable="true" maxHeight="310.0" maxWidth="128.0" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" prefHeight="293.0" prefWidth="119.0" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
-      </ImageView>
-      <ImageView fitHeight="300.0" fitWidth="120.0" pickOnBounds="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
-         <image>
-            <Image url="@img/오목게임.png" />
-         </image>
+         <graphic>
+            <ImageView fitHeight="280.0" fitWidth="100.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/숫자야구.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="rspBtn" disable="true" minHeight="300.0" minWidth="120.0" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
-      </ImageView>
-      <ImageView fitHeight="300.0" fitWidth="120.0" pickOnBounds="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
-         <image>
-            <Image url="@img/가위바위보.png" />
-         </image>
+         <graphic>
+            <ImageView fitHeight="280.0" fitWidth="100.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/가위바위보.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="omokBtn" disable="true" minHeight="300.0" minWidth="120.0" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
-      </ImageView>
-      <ImageView fitHeight="300.0" fitWidth="120.0" pickOnBounds="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
-         <image>
-            <Image url="@img/숫자야구.png" />
-         </image>
+         <graphic>
+            <ImageView fitHeight="280.0" fitWidth="100.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/오목게임.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="poopBtn" disable="true" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
-      </ImageView>
-      <Button mnemonicParsing="false" prefWidth="100.0" text="내정보" textFill="#2b2b2c" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+         <graphic>
+            <ImageView fitHeight="280.0" fitWidth="100.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/피하기.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="tetrisBtn" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" onAction="#SelectProc" prefHeight="300.0" prefWidth="120.0" text="Button" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+         <GridPane.margin>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+         <graphic>
+            <ImageView fitHeight="280.0" fitWidth="100.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/테트리스.jpg" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="backBtn" minHeight="58.0" minWidth="80.0" mnemonicParsing="false" onAction="#CancleProc" prefHeight="58.0" prefWidth="80.0" GridPane.valignment="TOP">
+         <graphic>
+            <ImageView fitHeight="58.0" fitWidth="80.0" pickOnBounds="true">
+               <image>
+                  <Image url="@../img/돌아가기.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Button fx:id="myInfoBtn" mnemonicParsing="false" onAction="#OpenMyInfoForm" prefWidth="100.0" text="내정보" textFill="#2b2b2c" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" prefWidth="100.0" text="랭킹확인" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <Button fx:id="rankBtn" mnemonicParsing="false" onAction="#OpenRankForm" prefWidth="100.0" text="랭킹확인" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <ImageView fitHeight="62.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@img/돌아가.jpg" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="300.0" fitWidth="120.0" pickOnBounds="true" GridPane.rowIndex="1">
-         <image>
-            <Image url="@img/테트리스.jpg" />
-         </image>
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </ImageView>
       <Label text="테트리스" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
@@ -101,6 +126,19 @@
             <Font name="Bank Gothic Light BT" size="72.0" />
          </font>
       </Label>
+      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="218.0" spacing="20.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3">
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="총점">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
+            <TextField fx:id="endScore" alignment="CENTER" disable="true" prefHeight="35.0" prefWidth="153.0">
+               <font>
+                  <Font size="23.0" />
+               </font></TextField>
+         </children>
+      </HBox>
    </children>
    <opaqueInsets>
       <Insets />
