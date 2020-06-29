@@ -9,8 +9,9 @@ import java.util.ArrayList;
 
 public class DataBaseServiceImpl implements DataBaseService {
 	final static String DRIVER = "oracle.jdbc.driver.OracleDriver";
-	//final static String URL = "jdbc:oracle:thin:@192.168.100.10:1521:XE";//VM웨어 IP DB
-	final static String URL = "jdbc:oracle:thin:@localhost:1521:XE"; //제출용 URL
+	// final static String URL = "jdbc:oracle:thin:@192.168.100.10:1521:XE";//VM웨어
+	// IP DB
+	final static String URL = "jdbc:oracle:thin:@localhost:1521:XE"; // 제출용 URL
 	final static String USER = "system";
 	final static String PASS = "oracle";
 
@@ -73,7 +74,6 @@ public class DataBaseServiceImpl implements DataBaseService {
 			e.printStackTrace();
 			result = false;
 		}
-		
 
 		return true;
 	}
@@ -91,7 +91,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 			rs = ps.executeQuery();
 
 			while (!rs.next()) {
-				return false;//결과가 없다면 중복되지 않음
+				return false;// 결과가 없다면 중복되지 않음
 			}
 			rs.close();
 			ps.close();
@@ -107,10 +107,9 @@ public class DataBaseServiceImpl implements DataBaseService {
 	@Override
 	public ArrayList<Member> select() {
 		ArrayList<Member> resultList = new ArrayList<Member>();
-		try {//
+		try {
 			conn = DriverManager.getConnection(URL, USER, PASS);
-			String sql = "select * from member order by desc"
-					+ "";
+			String sql = "select * from member";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 
@@ -122,7 +121,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 				m.setQuiz(rs.getString("quiz"));
 				m.setAnswer(rs.getString("answer"));
 				m.setScore(rs.getInt("score"));
-				
+
 				resultList.add(m);
 			}
 			rs.close();
@@ -132,8 +131,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 			e.printStackTrace();
 			return null;
 		}
-		
-		
+
 		// TODO Auto-generated method stub
 		return resultList;
 	}
@@ -157,7 +155,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 				m.setQuiz(rs.getString("quiz"));
 				m.setAnswer(rs.getString("answer"));
 				m.setScore(rs.getInt("score"));
-				
+
 				return m;
 			}
 			rs.close();
@@ -169,6 +167,28 @@ public class DataBaseServiceImpl implements DataBaseService {
 		}
 
 		return m;
+	}
+
+	@Override
+	public boolean excuteSql(String sql) {
+		// TODO Auto-generated method stub
+		int result = 0;
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			ps = conn.prepareStatement(sql);
+			result = ps.executeUpdate();
+			if(result == 0) {
+				return false;
+			}
+			else {
+				return true;
+			}
+	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

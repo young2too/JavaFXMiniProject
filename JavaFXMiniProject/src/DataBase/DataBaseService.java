@@ -9,4 +9,6 @@ public interface DataBaseService {
 	public ArrayList<Member> select();
 	public Member SearchMemberByID(String id);
 	
+	public boolean excuteSql(String sql);
+	
 }

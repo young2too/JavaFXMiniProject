@@ -37,6 +37,8 @@ public class MyInfoController extends Controller implements Initializable{
 		backImgBtn = (Button)myInfoPage.lookup("#backImgbtn");
 		comSrv.setMouserBtnCursurEffect(backImgBtn);
 		myInfoSrv.setLabelsToMyInfo(myInfoPage);
+		
+		
 	}
 	
 	public void confirmBtnAction() {

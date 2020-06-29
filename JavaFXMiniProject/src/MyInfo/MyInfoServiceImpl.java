@@ -12,7 +12,8 @@ public class MyInfoServiceImpl implements MyInfoService{
 	@Override
 	public void setMyInfo() {
 		// TODO Auto-generated method stub
-		System.out.println("DB에서 값 받아와서 라벨 수정");
+		//확인 버튼임
+		System.out.println("DB에 내 정보 수정함");
 	}
 
 	@Override
@@ -25,6 +26,7 @@ public class MyInfoServiceImpl implements MyInfoService{
 	public void setLabelsToMyInfo(Parent myInfoPage) {
 		// TODO Auto-generated method stub
 		System.out.println("라벨들의 정보를 내 현재 정보로 변경하는 함수 DB에서 받아옴");
+		
 		
 	}
 
