@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="418.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Signup.SignupController">
+   <children>
+      <Pane layoutX="3.0" layoutY="-3.0" prefHeight="256.0" prefWidth="567.0" />
+      <HBox prefHeight="77.0" prefWidth="589.0">
+         <children>
+            <Label alignment="CENTER" prefHeight="77.0" prefWidth="582.0" text="회원가입" textFill="#220202">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+      <VBox layoutX="-1.0" layoutY="77.0" prefHeight="289.0" prefWidth="214.0">
+         <children>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="41.0" prefWidth="224.0" text="* 아이디">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="RIGHT" prefHeight="41.0" prefWidth="217.0" text="* 닉네임">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" prefHeight="41.0" prefWidth="225.0" text="* 비밀번호">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefHeight="41.0" prefWidth="222.0" text="* 비밀번호 확인">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </Label>
+            <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" prefWidth="222.0" text="* 비밀번호 찾기 질문/답변">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+         </children>
+      </VBox>
+      <HBox layoutX="3.0" layoutY="328.0" prefHeight="90.0" prefWidth="583.0">
+         <children>
+            <Button fx:id="signBtn" mnemonicParsing="false" onAction="#signupProc" prefHeight="40.0" prefWidth="100.0" text="가입">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="170.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#CancelProc" prefHeight="40.0" prefWidth="100.0" text="취소">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <HBox.margin>
+                  <Insets bottom="10.0" left="50.0" right="10.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <VBox layoutX="218.0" layoutY="77.0" prefHeight="176.0" prefWidth="266.0">
+         <children>
+            <TextField fx:id="idTxt" prefHeight="41.0" prefWidth="188.0" promptText="ID 입력">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="nickTxt" promptText="닉네임 입력">
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </TextField>
+            <TextField fx:id="pw" promptText="비밀번호 입력">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+            <TextField fx:id="pwOk" promptText="비밀번호 확인">
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <VBox layoutX="482.0" layoutY="83.0" prefHeight="176.0" prefWidth="95.0">
+         <children>
+            <Button fx:id="idChk" mnemonicParsing="false" text="중복확인">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="nickChk" mnemonicParsing="false" text="중복확인">
+               <VBox.margin>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+      <VBox layoutY="247.0" prefHeight="110.0" prefWidth="589.0">
+         <children>
+            <ComboBox fx:id="cmbQuiz" prefHeight="31.0" prefWidth="262.0" promptText="비밀번호 분실시 질문">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="220.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </ComboBox>
+            <TextField fx:id="cmbTxt" prefHeight="31.0" prefWidth="262.0" promptText="입력">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="220.0" right="105.0" top="-5.0" />
+               </VBox.margin>
+            </TextField>
+         </children>
+      </VBox>
+      <Button fx:id="backBtn" onAction="#CancelProc" layoutX="5.0" layoutY="15.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="49.0">
+         <graphic>
+            <ImageView fx:id="img" fitHeight="45.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/돌아가기.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+   </children>
+</AnchorPane>
+
+package Signup;
+
+import java.net.URL;
+import java.util.Map;
+import java.util.ResourceBundle;
+
+import CommonService.CommonService;
+import CommonService.CommonServiceImpl;
+import CommonService.Controller;
+import PwOk.PwOkService;
+import PwOk.PwOkServiceImpl;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextField;
+
+
+public class SignupController extends Controller implements Initializable{
+	@FXML
+	private Button backBtn;
+	@FXML
+	private Button idChk;
+	@FXML
+	private Button nickChk;
+	@FXML
+	private Button signBtn;
+	@FXML
+	private Button cancelBtn;
+	
+	private Parent Signup;
+	private CommonService comSrv;
+	private SignupService signSrv;
+	PwOkService pwOkSrv = new PwOkServiceImpl();
+	@Override
+	public void setRoot(Parent root) {
+		// TODO Auto-generated method stub
+		this.Signup = root;
+		
+		backBtn = (Button)Signup.lookup("#backBtn");
+		backBtn.setStyle("-fx-base: #FFFFFF;");
+	    comSrv.setMouserBtnCursurEffect(backBtn);
+	    idChk = (Button)Signup.lookup("#idChk");
+	    comSrv.setMouserBtnCursurEffect(idChk);
+	    nickChk = (Button)Signup.lookup("#nickChk");
+	    comSrv.setMouserBtnCursurEffect(nickChk);
+	    signBtn = (Button)Signup.lookup("#signBtn");
+	    comSrv.setMouserBtnCursurEffect(signBtn);
+	    cancelBtn = (Button)Signup.lookup("#cancelBtn");
+	    comSrv.setMouserBtnCursurEffect(cancelBtn);
+	    pwOkSrv.AddComboBox(Signup);
+	   }
+
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		comSrv = new CommonServiceImpl();
+		signSrv = new SignupServiceImpl();
+	}
+	
+	public void CancelProc(ActionEvent event) { // 취소버튼 커서 및 창닫기
+		comSrv.WindowClose(event);
+	}
+	
+	private boolean isCheck(Map<String, TextField> txtFldMap, String[] txtFldArr, String[] list) {
+		if(comSrv.isEmpty(txtFldMap, txtFldArr, list)) {
+			return false;
+		}
+		
+		String pw = txtFldMap.get(txtFldArr[2]).getText();
+		String pwOk= txtFldMap.get(txtFldArr[3]).getText();
+		
+		if(!signSrv.comparePW(pw, pwOk)) {
+			signSrv.signupAlertWindow("오류", "패스워드가 다릅니다",AlertType.ERROR);
+			txtFldMap.get(txtFldArr[2]).clear();
+			txtFldMap.get(txtFldArr[2]).requestFocus();
+			txtFldMap.get(txtFldArr[3]).clear();
+			return false;
+		}
+		
+		if(!signSrv.isComboBox(Signup)) {
+			return false;
+		}
+		
+		
+		return true;
+	}
+	
+	public void signupProc() { // 가입누를 때 여러가지 기능
+		String []txtFldArr = {"#idTxt","#nickTxt","#pw","#pwOk","#cmbTxt"};
+		String []list = {"이름","아이디","암호","암호확인","비밀번호 질문/답변"};
+		Map<String, TextField> txtFldMap = signSrv.getTextFieldInfo(Signup, txtFldArr);
+		
+		if(!isCheck(txtFldMap, txtFldArr, list)) {
+			return;
+		}
+		
+		if(comSrv.isEmpty(txtFldMap, txtFldArr, list)) {
+			return;
+		}
+		if(!signSrv.isComboBox(Signup)) {
+			comSrv.alertWindow("사용자 정보가 없습니다.", "비밀번호 분실 시 필요할 비밀번호를 입력해주세요.", AlertType.ERROR);
+			return;
+		}
+		
+		if(!comSrv.isEmpty(txtFldMap, txtFldArr, list)) {
+			signSrv.signupAlertWindow("환영합니다!","회원가입 완료됬습니다. 로그인해주세요 :)", AlertType.INFORMATION);
+		}
+		Stage s = (Stage)Signup.getScene().getWindow();
+		s.close();
+	}
+}
+
+package Signup;
+
+import java.util.List;
+import java.util.Map;
+
+import javafx.scene.Parent;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
+
+public interface SignupService {
+	
+	public boolean comparePW(String pw, String pwOk); // 비번,비번확인 일치여부
+	
+	public boolean isComboBox(Parent signForm);
+	public String getComboBoxString(Parent signForm);
+	
+	public Map<String, TextField> getTextFieldInfo(Parent root, String[] txtFldArr); // 해당 입력창이 비었을 때 나타내주는 텍스트 이름
+	
+	public void signupAlertWindow(String hdMsg, String contMsg, AlertType Type);
+	public void signupAlertWindow(String contMsg, AlertType Type);
+	
+	
+	
+}
+
+package Signup;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import CommonService.CommonService;
+import CommonService.CommonServiceImpl;
+import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+
+public class SignupServiceImpl implements SignupService{
+	
+	@Override
+	public boolean comparePW(String pw, String pwOk) {
+		// TODO Auto-generated method stub
+		return pw.contentEquals(pwOk);
+	}
+
+
+	@Override
+	public boolean isComboBox(Parent membershipForm) {
+		// TODO Auto-generated method stub
+		CommonService comSrv = new CommonServiceImpl();
+		ComboBox<String> cmbBox = (ComboBox<String>)membershipForm.lookup("#cmbQuiz");
+		if(cmbBox.getValue() == null) {
+			comSrv.alertWindow("사용자 정보가 없습니다.", "비밀번호 질문을 선택해주세요.", AlertType.ERROR);
+			return false;
+		}
+		return true;
+	}
+	
+	@Override
+	public String getComboBoxString(Parent membershipForm) {
+		// TODO Auto-generated method stub
+		ComboBox<String> selfQuiz = (ComboBox<String>)membershipForm.lookup("#cmbQuiz");
+		
+		if(selfQuiz == null) {
+			return "";
+		}
+		return selfQuiz.getValue().toString();
+	}
+
+	@Override
+	public void signupAlertWindow(String hdMsg, String contMsg, AlertType Type) {
+		// TODO Auto-generated method stub
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(hdMsg);
+		alert.setContentText(contMsg);
+		alert.show();
+		
+	}
+
+	@Override
+	public void signupAlertWindow(String contMsg, AlertType Type) {
+		// TODO Auto-generated method stub
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setContentText(contMsg);
+		alert.show();
+	}
+
+	@Override
+	public Map<String, TextField> getTextFieldInfo(Parent root, String[] txtFldArr) {
+		Map<String, TextField> txtFldMap = new HashMap<String, TextField>();
+		
+		for(String txtFldId : txtFldArr) {
+			TextField txtFld = (TextField)root.lookup(txtFldId);
+			txtFldMap.put(txtFldId, txtFld);
+		}
+		return txtFldMap;
+	}
+}
