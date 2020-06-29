@@ -66,7 +66,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 
 			while (!rs.next()) {
 				return false;
-			}
+			}//
 			rs.close();
 			ps.close();
 		} catch (SQLException e) {
