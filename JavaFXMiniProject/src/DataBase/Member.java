@@ -1,46 +1,47 @@
 package DataBase;
 
 public class Member {
-	private String name;
-	public String getName() {
-		return name;
+	private String ID;
+	private String PW;
+	private int Score;
+	private String nickName;
+	private String quiz;
+	private String answer;
+	
+	public String getID() {
+		return ID;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setID(String iD) {
+		ID = iD;
 	}
-	private String id;
-	private String pw;
-	private String gender;
-	private	String age;
-	public String getId() {
-		return id;
+	public String getPW() {
+		return PW;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setPW(String pW) {
+		PW = pW;
 	}
-	public String getPw() {
-		return pw;
+	public int getScore() {
+		return Score;
 	}
-	public void setPw(String pw) {
-		this.pw = pw;
+	public void setScore(int score) {
+		Score = score;
 	}
-	public String getGender() {
-		return gender;
+	public String getNickName() {
+		return nickName;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setNickName(String nickName) {
+		this.nickName = nickName;
 	}
-	public String getAge() {
-		return age;
+	public String getQuiz() {
+		return quiz;
 	}
-	public void setAge(String age) {
-		this.age = age;
+	public void setQuiz(String quiz) {
+		this.quiz = quiz;
 	}
-	public int getLike() {
-		return like;
+	public String getAnswer() {
+		return answer;
 	}
-	public void setLike(int like) {
-		this.like = like;
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
-	private int like;
 }
