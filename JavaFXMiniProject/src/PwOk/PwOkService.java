@@ -1,31 +1,34 @@
 package PwOk;
 
 import java.util.List;
-
 import javafx.scene.Parent;
 
 public interface PwOkService {
+
+	public void checkId(Parent pwOkForm); 
+	// 아이디 중복확인
 	
-	public Parent OpenMembershipForm();
-	public boolean compareNewPW(String newPw, String newPwOk);
-	/*
-	 *  compareNewpW -새로운 비밀번호 비교 메소드
-	 *  newPw: 새로운 비밀번호 필드 
-	 *  newPwOk: 새로운 비밀번호 확인 필드
-	 */
-	public boolean compareQuiz(String quiz, String quizOk);;
-	/*
-	 *  compareQuiz -질문 비교 메소드
-	 *  quiz: 질문 필드(회원가입에서 입력할 질문) 
-	 *  quizOk: 질문 확인 필드(비밀번호찾기화면에서 선택할 질문)
-	 */
-	public boolean compareAnswer(String answer, String answerOk);
-	/*
-	 *  compareAnswer -질문답 비교 메소드
-	 *  answer: 질문답 필드(회원가입에서 입력할 질문) 
-	 *  answerOk: 질문답 확인 필드(비밀번호찾기화면에서 선택할 질문)
-	 */
-	public boolean isComboBox(Parent membershipForm);
-	public String getComboBoxString(Parent membershipForm);
-	public void AddComboBox(Parent form, List<String> items);
+	public void checkQuiz(Parent pwOkForm);
+	// 질문 중복확인
+	
+	public void setCheckBtn(Parent pwOkForm);
+	// 버튼 환경설정
+	
+	public void registerNewPw(Parent pwOkForm);
+	// 새로운 비밀번호 등록
+	
+	public boolean comparePw(Parent pwOkform);
+	// 비밀번호 중복확인 
+	
+	
+	
+	public void AddComboBox(Parent pwOkform);
+	// 콤보박스 내용 추가 
+	
+	
+	
+	public boolean isComboBox(Parent pwOkform);
+	public String getComboBoxString(Parent pwOkform);
+	
+
 }
