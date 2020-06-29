@@ -258,7 +258,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 				m.setAnswer(rs.getString("answer"));
 				m.setScore(rs.getInt("score"));
 				return m;
-			}
+			}//
 			rs.close();
 			ps.close();
 		} catch (SQLException e) {

@@ -10,7 +10,7 @@ public interface DataBaseService {
 	public ArrayList<Member> select();
 	public Member SearchMemberByID(String id);
 	public Member SearchMemberByNickname(String nickname);
-	
+	//
 	public boolean excuteSql(String sql);
 	public int calcRankByID(String id);
 	
