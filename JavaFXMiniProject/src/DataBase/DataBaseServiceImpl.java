@@ -156,7 +156,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 				m.setQuiz(rs.getString("quiz"));
 				m.setAnswer(rs.getString("answer"));
 				m.setScore(rs.getInt("score"));
-				System.out.println("여긴오나");
+				
 				return m;
 			}
 			rs.close();
@@ -258,7 +258,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 				m.setAnswer(rs.getString("answer"));
 				m.setScore(rs.getInt("score"));
 				return m;
-			}//
+			}
 			rs.close();
 			ps.close();
 		} catch (SQLException e) {
@@ -267,7 +267,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 			return null;
 		}
 
-		return m;
+		return null;
 	}
 
 }
