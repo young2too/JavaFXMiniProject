@@ -147,15 +147,16 @@ public class DataBaseServiceImpl implements DataBaseService {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, id);
 			rs = ps.executeQuery();
-
+			System.out.println(id);
 			while (rs.next()) {
+
 				m.setID(rs.getString("id"));
 				m.setPW(rs.getString("pw"));
 				m.setNickName(rs.getString("nickname"));
 				m.setQuiz(rs.getString("quiz"));
 				m.setAnswer(rs.getString("answer"));
 				m.setScore(rs.getInt("score"));
-
+				System.out.println("여긴오나");
 				return m;
 			}
 			rs.close();
@@ -184,6 +185,51 @@ public class DataBaseServiceImpl implements DataBaseService {
 				return true;
 			}
 	
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	@Override
+	public int calcRankByID(String id) {
+		// TODO Auto-generated method stub
+		int rank = 0;
+
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			String sql = "select * from member order by score desc";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				rank++;
+				if(rs.getString("id").equals(id))
+					return rank;
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return rank;
+		}
+
+		return rank;
+	}
+
+	@Override
+	public boolean commit() {
+		// TODO Auto-generated method stub
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			String sql = "commit";
+			ps = conn.prepareStatement(sql);
+			ps.executeUpdate();
+			rs.close();
+			ps.close();
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
