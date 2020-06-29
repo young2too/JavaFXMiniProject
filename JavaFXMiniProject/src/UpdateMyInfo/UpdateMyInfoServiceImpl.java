@@ -4,6 +4,9 @@ import java.util.Map;
 
 import CommonService.CommonService;
 import CommonService.CommonServiceImpl;
+import DataBase.DataBaseService;
+import DataBase.DataBaseServiceImpl;
+import DataBase.Member;
 import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -13,6 +16,8 @@ import javafx.scene.control.Button;
 
 public class UpdateMyInfoServiceImpl implements UpdateMyInfoService{
 	CommonService comSrv = new CommonServiceImpl();
+	DataBaseService dbSrv = new DataBaseServiceImpl();
+	
 	public void setCheckBoxListener(Parent updateMyInfoForm) {
 		// TODO Auto-generated method stub
 		CheckBox newIDCheckBox = (CheckBox)updateMyInfoForm.lookup("#newIDCheckBox");
@@ -37,7 +42,17 @@ public class UpdateMyInfoServiceImpl implements UpdateMyInfoService{
 	@Override
 	public void setTextFieldToMyInfo(Parent updateMyInfoForm) {
 		// TODO Auto-generated method stub
+		//현재 로그인한 ID는 로그인서비스에서 받아오면 됨
+		String id="1";
+		Member m = new Member();
+		m = dbSrv.SearchMemberByID(id);
+		TextField newNickTxt = (TextField)updateMyInfoForm.lookup("#newNickTxt");
+		TextField newIDTxt = (TextField)updateMyInfoForm.lookup("#newIDTxt");
 		System.out.println("DB에서 받아와서 ID와 PW의 promptText를 내 것으로 바꿔줌");
+		
+		newNickTxt.setPromptText(m.getNickName());
+		newIDTxt.setPromptText(m.getID());
+		
 	}
 
 	@Override
@@ -88,6 +103,9 @@ public class UpdateMyInfoServiceImpl implements UpdateMyInfoService{
 	public void overlapCheck(Parent updateMyInfoForm) {
 		// TODO Auto-generated method stub
 		TextField newIDTxt = (TextField)updateMyInfoForm.lookup("#newIDTxt");
+		if(newIDTxt.getText().length()==0) {
+			comSrv.alertWindow("에러", "ID를 적어주세요!", AlertType.ERROR);
+		}
 		System.out.println("newIDTxt를 이용하여 DB 중복체크");
 	}
 
@@ -95,6 +113,9 @@ public class UpdateMyInfoServiceImpl implements UpdateMyInfoService{
 	public void overlapNickCheck(Parent updateMyInfoForm) {
 		// TODO Auto-generated method stub
 		TextField newNickTxt = (TextField)updateMyInfoForm.lookup("#newNickTxt");
+		if(newNickTxt.getText().length()==0) {
+			comSrv.alertWindow("에러", "닉네임 적어주세요!", AlertType.ERROR);
+		}
 		System.out.println("newNickTxt를 이용하여 DB 중복체크");
 	}
 }

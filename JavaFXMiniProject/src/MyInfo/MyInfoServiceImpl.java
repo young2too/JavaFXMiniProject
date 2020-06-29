@@ -19,6 +19,7 @@ public class MyInfoServiceImpl implements MyInfoService{
 		// TODO Auto-generated method stub
 		//확인 버튼임
 		System.out.println("DB에 내 정보 수정함");
+		
 	}
 
 	@Override

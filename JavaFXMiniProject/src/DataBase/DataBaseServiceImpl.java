@@ -237,4 +237,37 @@ public class DataBaseServiceImpl implements DataBaseService {
 		}
 	}
 
+	@Override
+	public Member SearchMemberByNickname(String nickname) {
+		// TODO Auto-generated method stub
+		Member m = new Member();
+
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			String sql = "select * from member where nickname=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, nickname);
+			rs = ps.executeQuery();
+			System.out.println(nickname);
+			while (rs.next()) {
+
+				m.setID(rs.getString("id"));
+				m.setPW(rs.getString("pw"));
+				m.setNickName(rs.getString("nickname"));
+				m.setQuiz(rs.getString("quiz"));
+				m.setAnswer(rs.getString("answer"));
+				m.setScore(rs.getInt("score"));
+				return m;
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
+		return m;
+	}
+
 }
