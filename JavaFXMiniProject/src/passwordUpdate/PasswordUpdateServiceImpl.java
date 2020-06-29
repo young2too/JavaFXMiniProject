@@ -18,12 +18,12 @@ public class PasswordUpdateServiceImpl implements PasswordUpdateService{
 		// TODO Auto-generated method stub
 		String[] txtFldArr= {"#oldPwTxt","#newPwTxt", "#newPwOkTxt"};
 		Map<String, TextField> txtFldMap = comSrv.getTextFieldInfo(passwordUpdateForm, txtFldArr);
+		
 		if(comSrv.isEmpty(txtFldMap, txtFldArr)) {
 			comSrv.alertWindow("에러", "빈 곳이 있습니다", AlertType.ERROR);
 			return;
 		}
 		else if(comparePW(passwordUpdateForm)) {
-			System.out.println(comparePW(passwordUpdateForm));
 			comSrv.alertWindow("에러", "비밀번호가 일치하지 않습니다", AlertType.ERROR);
 			return;
 		}

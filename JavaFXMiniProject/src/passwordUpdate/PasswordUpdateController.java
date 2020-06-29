@@ -23,6 +23,7 @@ public class PasswordUpdateController extends Controller implements Initializabl
 	public void setRoot(Parent root) {
 		// TODO Auto-generated method stub
 		this.passwordUpdateForm = root;
+		
 		backImgBtn = (Button)passwordUpdateForm.lookup("#backImgBtn");
 		comSrv.setMouserBtnCursurEffect(backImgBtn);
 	}

@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class DataBaseServiceImpl implements DataBaseService {
 	final static String DRIVER = "oracle.jdbc.driver.OracleDriver";
@@ -35,12 +36,12 @@ public class DataBaseServiceImpl implements DataBaseService {
 			conn = DriverManager.getConnection(URL, USER, PASS);
 			String sql = "insert into member values(?,?,?,?,?,?)";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, member.getId());
-			ps.setString(2, member.getPw());
-			ps.setString(3, member.getName());
-			ps.setString(4, member.getGender());
-			ps.setString(5, member.getAge());
-			ps.setInt(6, member.getLike());
+			ps.setString(1, member.getID());
+			ps.setString(2, member.getPW());
+			ps.setString(3, member.getNickName());
+			ps.setString(4, member.getQuiz());
+			ps.setString(5, member.getAnswer());
+			ps.setInt(6, member.getScore());
 			res = ps.executeUpdate();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -74,7 +75,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 		}
 		
 
-		return result;
+		return true;
 	}
 
 	@Override
@@ -101,6 +102,72 @@ public class DataBaseServiceImpl implements DataBaseService {
 		}
 
 		return result;
+	}
+
+	@Override
+	public ArrayList<Member> select() {
+		ArrayList<Member> resultList = new ArrayList<Member>();
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			String sql = "select * from member";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				Member m = new Member();
+				m.setID(rs.getString("id"));
+				m.setPW(rs.getString("pw"));
+				m.setNickName(rs.getString("nickname"));
+				m.setQuiz(rs.getString("quiz"));
+				m.setAnswer(rs.getString("answer"));
+				m.setScore(rs.getInt("score"));
+				
+				resultList.add(m);
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+		// TODO Auto-generated method stub
+		return resultList;
+	}
+
+	@Override
+	public Member SearchMemberByID(String id) {
+		// TODO Auto-generated method stub
+		Member m = new Member();
+
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			String sql = "select * from member where id=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				m.setID(rs.getString("id"));
+				m.setPW(rs.getString("pw"));
+				m.setNickName(rs.getString("nickname"));
+				m.setQuiz(rs.getString("quiz"));
+				m.setAnswer(rs.getString("answer"));
+				m.setScore(rs.getInt("score"));
+				
+				return m;
+			}
+			rs.close();
+			ps.close();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
+
+		return m;
 	}
 
 }
