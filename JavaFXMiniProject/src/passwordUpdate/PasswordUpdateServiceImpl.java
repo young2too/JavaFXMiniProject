@@ -27,7 +27,16 @@ public class PasswordUpdateServiceImpl implements PasswordUpdateService{
 			comSrv.alertWindow("에러", "비밀번호가 일치하지 않습니다", AlertType.ERROR);
 			return;
 		}
-		System.out.println("다 입력했으니 DB에 등록하면 됨");
+		String currentID="1";
+		String newPW = txtFldMap.get(txtFldArr[2]).getText();
+		String sql = "update member set pw='"+newPW+"' where id='"+currentID+"'";
+		if(dbSrv.excuteSql(sql)==false) {
+			comSrv.alertWindow("오류", "알 수 없는 오류", AlertType.ERROR);
+		}else {
+			comSrv.alertWindow("확인", "비밀번호가 변경되었습니다", AlertType.CONFIRMATION);
+			dbSrv.commit();
+			comSrv.WindowClose(passwordUpdateForm);
+		}
 	}
 	@Override
 	public boolean comparePW(Parent passwordUpdateForm) {
@@ -36,7 +45,8 @@ public class PasswordUpdateServiceImpl implements PasswordUpdateService{
 		TextField newPwTxt = (TextField)passwordUpdateForm.lookup("#newPwTxt");
 		TextField newPwOkTxt = (TextField)passwordUpdateForm.lookup("#newPwOkTxt");
 		
-		System.out.println("oldPw를 DB에서 찾아와서 비교하는 곳");
+		String currentPW = "1";//로그인 메소드에서 패스워드 받아옴
+		
 		
 		if(newPwTxt.getText().equals(newPwOkTxt.getText())) {
 			return false;
