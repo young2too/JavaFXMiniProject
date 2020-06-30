@@ -28,23 +28,23 @@ public class PwOkServiceImpl implements PwOkService {
 	public void checkId(Parent pwOkForm) {
 		// TODO Auto-generated method stub
 		TextField idTxt = (TextField) pwOkForm.lookup("#idTxt"); // 내가 입력한 아이디
+
 		Button confirmIdBtn = (Button) pwOkForm.lookup("#confirmIdBtn");
 
 		if (idTxt.getText().length() == 0) {
 			comSrv.alertWindow("오류", "내용이 없습니다", AlertType.INFORMATION);
 			return;
 		}
-		if (dbSrv.overlapCheck(idTxt.getText())==false) {
+
+		if (dbSrv.overlapCheck(idTxt.getText()) == false) {
 			comSrv.alertWindow("없음", "아이디가 없습니다", AlertType.ERROR);
 			return;
 		}
 		member = dbSrv.SearchMemberByID(idTxt.getText());
-		if (idTxt.getText().equals(member.getID())) {
-			comSrv.alertWindow("확인 완료", "아이디가 일치합니다", AlertType.INFORMATION);
-			confirmIdBtn.setDisable(!confirmIdBtn.isDisabled());
-			idTxt.setDisable(!idTxt.isDisabled()); // 아이디입력 make disabled
-
-		}
+		comSrv.alertWindow("확인 완료", "아이디가 있습니다", AlertType.INFORMATION);
+		confirmIdBtn.setDisable(!confirmIdBtn.isDisabled());
+		idTxt.setDisable(!idTxt.isDisabled()); // 아이디입력 make disabled
+		
 	}
 
 	@Override // 질문 중복확인
@@ -66,17 +66,20 @@ public class PwOkServiceImpl implements PwOkService {
 		if (!isComboBox(pwOkForm)) {
 			return;
 		}
+		if (!isComboBox(pwOkForm)) {
+			return;
+		}
 		if (answerTxt.getText().equals(member.getAnswer()) && cmbQuiz.getValue().equals(member.getQuiz())) {
 			comSrv.alertWindow("확인 완료", "개인정보가 확인이 완료되었습니다", AlertType.INFORMATION);
-//			pwSrv.setCheckBtn(pwOkForm);
+//		pwSrv.setCheckBtn(pwOkForm);
 
 			confirmQuizBtn.setDisable(!confirmQuizBtn.isDisabled());
 			answerTxt.setDisable(!answerTxt.isDisabled());
 			cmbQuiz.setDisable(!cmbQuiz.isDisabled());// 콤보박스 make disabled
 
-			newPwTxt.setDisable(!newPwTxt.isDisable());
-			newPwOkTxt.setDisable(!newPwOkTxt.isDisable());
-			confirmPwBtn.setDisable(!confirmPwBtn.isDisable()); // 새로운비밀번호 make not disabled
+			newPwTxt.setDisable(false);
+			newPwOkTxt.setDisable(false);
+			confirmPwBtn.setDisable(false); // 새로운비밀번호 make not disabled
 		} else {
 			comSrv.alertWindow("오류 발생", "개인정보가 일치하지않습니다", AlertType.ERROR);
 			return;
@@ -117,7 +120,7 @@ public class PwOkServiceImpl implements PwOkService {
 			return;
 		}
 		System.out.println("다 입력했으니 DB에 등록하면 됨");
-		TextField id = (TextField)(pwOkForm.lookup("#idTxt"));// 이건 로그인 서비스에서 받아와야 함
+		TextField id = (TextField) (pwOkForm.lookup("#idTxt"));// 이건 로그인 서비스에서 받아와야 함
 
 		String newPwOkTxt = txtFldMap.get(txtFldArr[1]).getText();
 
@@ -132,6 +135,7 @@ public class PwOkServiceImpl implements PwOkService {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setHeaderText("정보수정 완료");
 			alert.setContentText("비밀번호가 완료되었습니다");
+
 			alert.setOnCloseRequest(e -> {
 				comSrv.WindowClose(pwOkForm);
 			});
