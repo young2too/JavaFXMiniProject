@@ -109,7 +109,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 		ArrayList<Member> resultList = new ArrayList<Member>();
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASS);
-			String sql = "select * from member";
+			String sql = "select * from member order by score desc";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 

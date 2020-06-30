@@ -61,7 +61,7 @@ public class PwOkServiceImpl implements PwOkService {
 		
 		Member m = new Member();
 		
-		String currentID="1";//로그인서비스에서 받아서 넣기
+		String currentID="13";//로그인서비스에서 받아서 넣기
 		
 		m= dbSrv.SearchMemberByID(currentID);
 		if(!isComboBox(pwOkForm)) {

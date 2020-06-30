@@ -7,8 +7,11 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
+
 <!-- .. -->
-<BorderPane prefHeight="399.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+
+<BorderPane prefHeight="399.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+fx:controller="Rank.RankController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
    </padding>
@@ -92,52 +95,52 @@
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </GridPane.margin>
             </Label>
-            <Label text="1위닉네임" translateX="65.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="nick1st" text="1위닉네임" translateX="65.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="2위닉네임" translateX="65.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="nick2nd" text="2위닉네임" translateX="65.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="3위닉네임" translateX="65.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="nick3rd" text="3위닉네임" translateX="65.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="4위닉네임" translateX="65.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="nick4th" text="4위닉네임" translateX="65.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="5위닉네임" translateX="65.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="nick5th" text="5위닉네임" translateX="65.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="1등" translateX="45.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Label fx:id="score1st" text="1등" translateX="45.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="2등" translateX="45.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Label fx:id="score2nd" text="2등" translateX="45.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="3등" translateX="45.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Label fx:id="score3rd" text="3등" translateX="45.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="4등" translateX="45.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <Label fx:id="score4th" text="4등" translateX="45.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label text="5등" translateX="45.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <Label fx:id="score5th" text="5등" translateX="45.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <font>
                   <Font size="18.0" />
                </font>
@@ -157,6 +160,15 @@
                   <Font size="36.0" />
                </font>
             </Label>
+            <Button onAction="#backImgBtnAction" fx:id="backImgBtn" layoutX="16.0" layoutY="6.0" mnemonicParsing="false">
+               <graphic>
+                  <ImageView  fitHeight="53.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../img/돌아가기.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
          </children>
       </Pane>
    </top>

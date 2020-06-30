@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 
 public class CommonServiceImpl implements CommonService {
 	Parent root2;
-
+	
 	@Override
 	public void WindowClose(ActionEvent event) {
 		// TODO Auto-generated method stub
@@ -54,6 +54,8 @@ public class CommonServiceImpl implements CommonService {
 		alert.setHeaderText(hdMsg);
 		alert.setContentText(contMsg);
 		alert.show();
+		
+		return;
 	}
 
 	@Override
