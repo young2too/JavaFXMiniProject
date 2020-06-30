@@ -101,4 +101,3 @@ public class GameSelectController extends Controller implements Initializable{
 		
 	}
 }
-
