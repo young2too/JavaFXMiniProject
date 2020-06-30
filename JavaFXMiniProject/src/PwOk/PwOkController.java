@@ -63,6 +63,4 @@ public class PwOkController extends Controller implements Initializable {
 		pwOkSrv = new PwOkServiceImpl();
 		dbSrv = new DataBaseServiceImpl();
 	}
-
-	
 }

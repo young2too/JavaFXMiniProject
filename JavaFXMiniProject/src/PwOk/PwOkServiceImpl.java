@@ -30,6 +30,7 @@ public class PwOkServiceImpl implements PwOkService {
 
 		if (idTxt.getText().length() == 0) {
 			comSrv.alertWindow("오류", "오류", AlertType.INFORMATION);
+			return;
 		}
 
 		if (idTxt.getText().equals(id)) {
@@ -55,6 +56,7 @@ public class PwOkServiceImpl implements PwOkService {
 
 		if (answerTxt.getText().length() == 0) {
 			comSrv.alertWindow("오류", "오류", AlertType.INFORMATION);
+			return;
 		}
 		
 		Member m = new Member();
@@ -69,7 +71,7 @@ public class PwOkServiceImpl implements PwOkService {
 			comSrv.alertWindow("확인 완료", "개인정보가 확인이 완료되었습니다", AlertType.INFORMATION);
 			pwSrv.setCheckBtn(pwOkForm);
 		} else {
-			comSrv.alertWindow("오류 발생", "개인정보가가 일치하지않습니다", AlertType.ERROR);
+			comSrv.alertWindow("오류 발생", "개인정보가 일치하지않습니다", AlertType.ERROR);
 			return;
 		}
 		confirmQuizBtn.setDisable(true);
