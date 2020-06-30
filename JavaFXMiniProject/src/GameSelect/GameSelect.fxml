@@ -59,7 +59,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="tetrisBtn" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" onAction="#SelectProc" prefHeight="300.0" prefWidth="120.0" text="Button" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="tetrisBtn" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" text="Button" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>

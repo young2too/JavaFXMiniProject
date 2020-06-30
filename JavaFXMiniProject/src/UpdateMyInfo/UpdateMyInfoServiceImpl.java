@@ -7,6 +7,7 @@ import CommonService.CommonServiceImpl;
 import DataBase.DataBaseService;
 import DataBase.DataBaseServiceImpl;
 import DataBase.Member;
+import Login.LoginServiceImpl;
 import javafx.scene.Parent;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
@@ -42,7 +43,7 @@ public class UpdateMyInfoServiceImpl implements UpdateMyInfoService {
 	public void setTextFieldToMyInfo(Parent updateMyInfoForm) {
 		// TODO Auto-generated method stub
 		// 현재 로그인한 ID는 로그인서비스에서 받아오면 됨
-		String id = "1";
+		String id = LoginServiceImpl.getCurrentUser().getID();
 		Member m = new Member();
 		m = dbSrv.SearchMemberByID(id);
 		TextField newNickTxt = (TextField) updateMyInfoForm.lookup("#newNickTxt");
@@ -92,7 +93,7 @@ public class UpdateMyInfoServiceImpl implements UpdateMyInfoService {
 		}
 
 		System.out.println("다 입력했으니 DB에 등록하면 됨");
-		String currentID = "1";// 이건 로그인 서비스에서 받아와야 함
+		String currentID = LoginServiceImpl.getCurrentUser().getID();// 이건 로그인 서비스에서 받아와야 함
 		TextField newIDTxt, newNickTxt;
 		newIDTxt = (TextField) updateMyInfoForm.lookup("#newIDTxt");
 		newNickTxt = (TextField) updateMyInfoForm.lookup("#newNickTxt");

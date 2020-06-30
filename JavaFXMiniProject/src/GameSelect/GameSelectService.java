@@ -18,6 +18,11 @@ public interface GameSelectService {
 
 	public void TextFieldEndScore(int endScore,Parent root);
 	
+	public void playTetris();
+	public void playPoop();
+	public void playSpace();
+	public void playBlock();
+	
 	//score와highscore를 만들어서 score<highscore면 최고 점수로 점수를 업데이트.
 	//gamescore.set블라블라로 업데이트 해준다.-->새로운 메서드 만들기!!!
 	//=>새로운 점수로 업데이트 후 최고점수를 get블라블라로 textfield로 쏴준다.

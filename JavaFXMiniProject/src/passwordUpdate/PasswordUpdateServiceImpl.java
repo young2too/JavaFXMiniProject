@@ -6,6 +6,7 @@ import CommonService.CommonService;
 import CommonService.CommonServiceImpl;
 import DataBase.DataBaseService;
 import DataBase.DataBaseServiceImpl;
+import Login.LoginServiceImpl;
 import javafx.scene.Parent;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
@@ -27,7 +28,7 @@ public class PasswordUpdateServiceImpl implements PasswordUpdateService{
 			comSrv.alertWindow("에러", "비밀번호가 일치하지 않습니다", AlertType.ERROR);
 			return;
 		}
-		String currentID="1";
+		String currentID=LoginServiceImpl.getCurrentUser().getID();
 		String newPW = txtFldMap.get(txtFldArr[2]).getText();
 		String sql = "update member set pw='"+newPW+"' where id='"+currentID+"'";
 		if(dbSrv.excuteSql(sql)==false) {
@@ -45,7 +46,7 @@ public class PasswordUpdateServiceImpl implements PasswordUpdateService{
 		TextField newPwTxt = (TextField)passwordUpdateForm.lookup("#newPwTxt");
 		TextField newPwOkTxt = (TextField)passwordUpdateForm.lookup("#newPwOkTxt");
 		
-		String currentPW = "1";//로그인 메소드에서 패스워드 받아옴
+		String currentPW = LoginServiceImpl.getCurrentUser().getPW();//로그인 메소드에서 패스워드 받아옴
 		
 		
 		if(newPwTxt.getText().equals(newPwOkTxt.getText())) {

@@ -102,6 +102,30 @@ public class GameSelectImpl implements GameSelectService{
 		
 	}
 
+	@Override
+	public void playTetris() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void playPoop() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void playSpace() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void playBlock() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 

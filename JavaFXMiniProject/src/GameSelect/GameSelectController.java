@@ -11,6 +11,7 @@ import CommonService.CommonServiceImpl;
 import CommonService.Controller;
 import DataBase.DataBaseService;
 import DataBase.DataBaseServiceImpl;
+import Login.LoginServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -22,7 +23,7 @@ public class GameSelectController extends Controller implements Initializable{
 	private CommonService comSrv;
 	private GameSelectService gameSrv;
 	private DataBaseService dbSrv;
-
+	List<Button> btnList = new ArrayList<Button>();
 	
 	Button tetrisBtn;
 	Button poopBtn;
@@ -51,6 +52,8 @@ public class GameSelectController extends Controller implements Initializable{
 		comSrv.setMouserBtnCursurEffect(rankBtn);
 		backBtn=(Button)root.lookup("#backBtn");
 		comSrv.setMouserBtnCursurEffect(backBtn);
+		
+		this.ButtonListInitialize();
 	}
 
 	@Override
@@ -80,24 +83,36 @@ public class GameSelectController extends Controller implements Initializable{
 		comSrv.WindowClose(event);
 	}
 	
-	public void SelectProc() {
+	public void ButtonListInitialize() {
 		//게임 선택하는 작업
 
 		Button tetrisBtn = (Button)root.lookup("#tetrisBtn");
 		Button poopBtn = (Button)root.lookup("#poopBtn");
 		Button blockBtn = (Button)root.lookup("#blockBtn");
 		Button spaceBtn = (Button)root.lookup("#spaceBtn");
-		List<Button> btnList = new ArrayList<Button>();
+		
 		btnList.add(tetrisBtn);
 		btnList.add(poopBtn);
 		btnList.add(blockBtn);
 		btnList.add(spaceBtn);
-		//게임이 끝난 값을 불러와서 endScore자리에 넣어준다.
-		gameSrv.TextFieldEndScore(120,root);
-		gameSrv.DisableGame(btnList, 120);
+		
+		int currentScore = LoginServiceImpl.getCurrentUser().getScore();
+		
 
-		
-		
-		
+		gameSrv.TextFieldEndScore(currentScore,root);
+		gameSrv.DisableGame(btnList, currentScore);
+	}
+	
+	public void selectTetris() {
+		gameSrv.playTetris();
+	}
+	public void selectPoop() {
+		gameSrv.playPoop();
+	}
+	public void selectBlock() {
+		gameSrv.playBlock();
+	}
+	public void selectSpace() {
+		gameSrv.playSpace();
 	}
 }
