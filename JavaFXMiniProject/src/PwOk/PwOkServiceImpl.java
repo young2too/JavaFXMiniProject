@@ -162,7 +162,7 @@ public class PwOkServiceImpl implements PwOkService {
 		List<String> items = new ArrayList<String>();
 		items.add("어머니 성함은?");
 		items.add("아버지 성함은?");
-		items.add("보물 1호는?");
+		items.add("보물 1호는?");//
 
 		if (cmbQuiz != null) {
 			for (String item : items) {
