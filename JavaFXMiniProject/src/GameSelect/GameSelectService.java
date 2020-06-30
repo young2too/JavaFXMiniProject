@@ -18,7 +18,7 @@ public interface GameSelectService {
 
 	public void TextFieldEndScore(int endScore,Parent root);
 	
-	public void playTetris();
+	public void playTetris() throws Exception;
 	public void playPoop();
 	public void playSpace();
 	public void playBlock();

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import CommonService.CommonService;
 import CommonService.CommonServiceImpl;
+import TetrisGame.Tetris;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -103,8 +104,10 @@ public class GameSelectImpl implements GameSelectService{
 	}
 
 	@Override
-	public void playTetris() {
+	public void playTetris() throws Exception {
 		// TODO Auto-generated method stub
+		Tetris tet = new Tetris();
+		tet.start(new Stage());
 		
 	}
 

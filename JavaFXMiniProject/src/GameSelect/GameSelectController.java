@@ -103,7 +103,7 @@ public class GameSelectController extends Controller implements Initializable{
 		gameSrv.DisableGame(btnList, currentScore);
 	}
 	
-	public void selectTetris() {
+	public void selectTetris() throws Exception {
 		gameSrv.playTetris();
 	}
 	public void selectPoop() {
