@@ -54,7 +54,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 	@Override
 	public boolean loginCheck(String id, String pw) {
 		// TODO Auto-generated method stub
-		boolean result = true;
+
 
 		try {
 			conn = DriverManager.getConnection(URL, USER, PASS);
@@ -72,7 +72,7 @@ public class DataBaseServiceImpl implements DataBaseService {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			result = false;
+			return false;
 		}
 
 		return true;

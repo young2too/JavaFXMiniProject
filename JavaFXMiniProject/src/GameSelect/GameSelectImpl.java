@@ -11,7 +11,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class GameSelectImpl implements GameSelectService{
-
+	CommonService comSrv = new CommonServiceImpl();
 	@Override
 	public void SelectProc(Parent root) {
 		// TODO Auto-generated method stub
@@ -35,7 +35,7 @@ public class GameSelectImpl implements GameSelectService{
 	@Override
 	public Parent OpenRankForm() {
 		// TODO Auto-generated method stub
-		CommonService comSrv = new CommonServiceImpl();
+		
 		Stage rankForm = new Stage();
 		Parent form = comSrv.showWindow(rankForm, "/Rank/RankScene.fxml");
 		return form;

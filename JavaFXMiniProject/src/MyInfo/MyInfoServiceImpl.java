@@ -5,6 +5,7 @@ import CommonService.CommonServiceImpl;
 import DataBase.DataBaseService;
 import DataBase.DataBaseServiceImpl;
 import DataBase.Member;
+import Login.LoginServiceImpl;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -33,7 +34,7 @@ public class MyInfoServiceImpl implements MyInfoService{
 		// TODO Auto-generated method stub
 		System.out.println("라벨들의 정보를 내 현재 정보로 변경하는 함수 DB에서 받아옴");
 		
-		String id = "1";//여기는 로그인 서비스를 이용하여 아이디를 받아옴
+		String id = LoginServiceImpl.getCurrentUser().getID();//여기는 로그인 서비스를 이용하여 아이디를 받아옴
 		Member m = new Member();
 		m = dbSrv.SearchMemberByID(id);
 		
