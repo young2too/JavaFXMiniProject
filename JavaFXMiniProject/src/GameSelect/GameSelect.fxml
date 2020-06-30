@@ -8,59 +8,46 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="495.0" prefWidth="714.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameSelect.GameSelectController">
+<GridPane maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="538.0" prefWidth="660.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameSelect.GameSelectController">
   <columnConstraints>
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
-    <ColumnConstraints hgrow="SOMETIMES" maxWidth="140.0" minWidth="10.0" prefWidth="140.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="140.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="140.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="140.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="160.0" minWidth="10.0" prefWidth="140.0" />
   </columnConstraints>
   <rowConstraints>
-      <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="368.0" minHeight="10.0" prefHeight="302.0" vgrow="SOMETIMES" />
-    <RowConstraints maxHeight="296.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="75.0" minHeight="10.0" prefHeight="75.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="368.0" minHeight="10.0" prefHeight="300.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="296.0" minHeight="10.0" prefHeight="42.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="296.0" minHeight="10.0" prefHeight="47.0" vgrow="SOMETIMES" />
       <RowConstraints maxHeight="147.0" minHeight="6.0" prefHeight="40.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button fx:id="numbaseBtn" disable="true" maxHeight="310.0" maxWidth="128.0" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" prefHeight="293.0" prefWidth="119.0" text="Button" GridPane.columnIndex="4" GridPane.rowIndex="1">
+      <Button fx:id="spaceBtn" disable="true" maxHeight="310.0" maxWidth="128.0" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" prefHeight="293.0" prefWidth="119.0" text="Button" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
          <graphic>
             <ImageView fitHeight="280.0" fitWidth="100.0" pickOnBounds="true">
                <image>
-                  <Image url="@../img/숫자야구.png" />
+                  <Image url="@../img/스페이스인베이더.jpg" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="rspBtn" disable="true" minHeight="300.0" minWidth="120.0" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" text="Button" GridPane.columnIndex="3" GridPane.rowIndex="1">
+      <Button fx:id="blockBtn" disable="true" minHeight="300.0" minWidth="120.0" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" text="Button" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
          <graphic>
             <ImageView fitHeight="280.0" fitWidth="100.0" pickOnBounds="true">
                <image>
-                  <Image url="@../img/가위바위보.png" />
+                  <Image url="@../img/블럭부수기.jpg" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="omokBtn" disable="true" minHeight="300.0" minWidth="120.0" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-         <graphic>
-            <ImageView fitHeight="280.0" fitWidth="100.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../img/오목게임.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </Button>
-      <Button fx:id="poopBtn" disable="true" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Button fx:id="poopBtn" contentDisplay="CENTER" disable="true" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" prefHeight="300.0" prefWidth="120.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
@@ -84,7 +71,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="backBtn" minHeight="58.0" minWidth="80.0" mnemonicParsing="false" onAction="#CancleProc" prefHeight="58.0" prefWidth="80.0" GridPane.valignment="TOP">
+      <Button fx:id="backBtn" minHeight="58.0" minWidth="80.0" mnemonicParsing="false" onAction="#CancleProc" prefHeight="58.0" prefWidth="80.0" GridPane.valignment="CENTER">
          <graphic>
             <ImageView fitHeight="58.0" fitWidth="80.0" pickOnBounds="true">
                <image>
@@ -96,11 +83,17 @@
          <font>
             <Font size="18.0" />
          </font>
+         <effect>
+            <DropShadow />
+         </effect>
       </Button>
-      <Button fx:id="rankBtn" mnemonicParsing="false" onAction="#OpenRankForm" prefWidth="100.0" text="랭킹확인" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+      <Button fx:id="rankBtn" mnemonicParsing="false" onAction="#OpenRankForm" prefWidth="100.0" text="랭킹확인" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <font>
             <Font size="18.0" />
-         </font></Button>
+         </font>
+         <effect>
+            <DropShadow />
+         </effect></Button>
       <Label text="테트리스" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
@@ -109,34 +102,33 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label text="오목" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Label text="블럭피하기" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label text="가위바위보" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Label text="스페이스인베이더" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
-            <Font size="18.0" />
+            <Font name="AMGDT" size="14.0" />
          </font></Label>
-      <Label text="숫자야구" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="2">
-         <font>
-            <Font name="AMGDT" size="18.0" />
-         </font></Label>
-      <Label text="MiniGame 5" textFill="#b93dee" GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.halignment="LEFT">
+      <Label prefHeight="88.0" prefWidth="434.0" text="MiniGame 5" textFill="#b93dee" GridPane.columnSpan="4" GridPane.halignment="CENTER">
          <font>
             <Font name="Bank Gothic Light BT" size="72.0" />
          </font>
       </Label>
-      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="218.0" spacing="20.0" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3">
+      <HBox alignment="CENTER" prefHeight="41.0" prefWidth="218.0" spacing="20.0" GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="3">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="총점">
                <font>
                   <Font size="23.0" />
                </font>
             </Label>
-            <TextField fx:id="endScore" alignment="CENTER" disable="true" prefHeight="35.0" prefWidth="153.0">
+            <TextField fx:id="endScore" alignment="CENTER" disable="true" prefHeight="35.0" prefWidth="153.0" style="-fx-background-color: #f3d9f4;">
                <font>
                   <Font size="23.0" />
-               </font></TextField>
+               </font>
+               <effect>
+                  <InnerShadow />
+               </effect></TextField>
          </children>
       </HBox>
    </children>

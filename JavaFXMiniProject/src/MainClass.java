@@ -6,7 +6,6 @@ import javafx.stage.Stage;
 public class MainClass extends Application{
 	CommonService comSrv = new CommonServiceImpl();
 	public static void main(String[] args) {
-		System.out.println("미니 프로젝트 GIT입니다");
 		launch(args);
 	}
 
@@ -14,8 +13,9 @@ public class MainClass extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		
-		comSrv.showWindow(primaryStage, "../MyInfo/MyInfo.fxml");
-		comSrv.showWindow(new Stage(), "../passwordUpdate/passwordUpdate.fxml");
+		//comSrv.showWindow(primaryStage, "/UpdateMyInfo/UpdateMyInfo.fxml");
+		comSrv.showWindow(primaryStage, "/Login/Login.fxml");
+		//comSrv.showWindow(new Stage(), "/passwordUpdate/passwordUpdate.fxml");
 		
 		/*
 		 * 각 FXML 파일은 해당 패키지에 넣고

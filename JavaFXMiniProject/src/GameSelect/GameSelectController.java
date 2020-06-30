@@ -26,9 +26,8 @@ public class GameSelectController extends Controller implements Initializable{
 	
 	Button tetrisBtn;
 	Button poopBtn;
-	Button omokBtn;
-	Button rspBtn;
-	Button numbaseBtn;
+	Button blockBtn;
+	Button spaceBtn;
 	Button myInfoBtn;
 	Button rankBtn;
 	Button backBtn;
@@ -42,12 +41,10 @@ public class GameSelectController extends Controller implements Initializable{
 		comSrv.setMouserBtnCursurEffect(tetrisBtn);
 		poopBtn = (Button)root.lookup("#poopBtn");
 		comSrv.setMouserBtnCursurEffect(poopBtn);
-		omokBtn=(Button)root.lookup("#omokBtn");
-		comSrv.setMouserBtnCursurEffect(omokBtn);
-		rspBtn=(Button)root.lookup("#rspBtn");
-		comSrv.setMouserBtnCursurEffect(rspBtn);
-		numbaseBtn=(Button)root.lookup("#numbaseBtn");
-		comSrv.setMouserBtnCursurEffect(numbaseBtn);
+		blockBtn=(Button)root.lookup("#blockBtn");
+		comSrv.setMouserBtnCursurEffect(blockBtn);
+		spaceBtn=(Button)root.lookup("#spaceBtn");
+		comSrv.setMouserBtnCursurEffect(spaceBtn);
 		myInfoBtn=(Button)root.lookup("#myInfoBtn");
 		comSrv.setMouserBtnCursurEffect(myInfoBtn);
 		rankBtn=(Button)root.lookup("#rankBtn");
@@ -88,23 +85,19 @@ public class GameSelectController extends Controller implements Initializable{
 
 		Button tetrisBtn = (Button)root.lookup("#tetrisBtn");
 		Button poopBtn = (Button)root.lookup("#poopBtn");
-		Button omokBtn = (Button)root.lookup("#omokBtn");
-		Button rspBtn = (Button)root.lookup("#rspBtn");
-		Button numbaseBtn = (Button)root.lookup("#numbaseBtn");
+		Button blockBtn = (Button)root.lookup("#blockBtn");
+		Button spaceBtn = (Button)root.lookup("#spaceBtn");
 		List<Button> btnList = new ArrayList<Button>();
 		btnList.add(tetrisBtn);
 		btnList.add(poopBtn);
-		btnList.add(omokBtn);
-		btnList.add(rspBtn);
-		btnList.add(numbaseBtn);
+		btnList.add(blockBtn);
+		btnList.add(spaceBtn);
 		//게임이 끝난 값을 불러와서 endScore자리에 넣어준다.
-		gameSrv.TextFieldEndScore(220,root);
-		gameSrv.DisableGame(btnList, 220);
-	
-		//게임을 끝낸점수는 200이고 게임제목은 테트리스
+		gameSrv.TextFieldEndScore(120,root);
+		gameSrv.DisableGame(btnList, 120);
+
 		
 		
 		
 	}
 }
-
