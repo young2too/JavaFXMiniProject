@@ -16,7 +16,7 @@ public interface SignupService {
 	
 	public Map<String, TextField> getTextFieldInfo(Parent root, String[] txtFldArr); // 해당 입력창이 비었을 때 나타내주는 텍스트 이름
 	
-	public void idChk(Parent signForm);
-	public void nickChk(Parent signForm);
+	public boolean idChk(Parent signForm);
+	public boolean nickChk(Parent signForm);
 	
 }

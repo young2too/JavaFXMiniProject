@@ -62,32 +62,38 @@ public class SignupServiceImpl implements SignupService{
 
 
 	@Override
-	public void idChk(Parent signForm) {
+	public boolean idChk(Parent signForm) {
 		// TODO Auto-generated method stub
 		TextField idTxt = (TextField)signForm.lookup("#idTxt");
 		
 		if(idTxt.getText().length()==0) {
 			comSrv.alertWindow("아이디 미입력", "아이디를 입력해주세요.", AlertType.WARNING);
+			return false;
 		}else if(dbSrv.overlapCheck(idTxt.getText())) {
 			comSrv.alertWindow("아이디중복", "중복된 아이디 입니다.", AlertType.WARNING);
+			return false;
 		}else {
 			comSrv.alertWindow("사용가능", "사용 가능한 아이디 입니다.", AlertType.INFORMATION);
+			return true;
 		}
 		
 	}
 
 
 	@Override
-	public void nickChk(Parent signForm) {
+	public boolean nickChk(Parent signForm) {
 		// TODO Auto-generated method stub
 		TextField nickTxt = (TextField)signForm.lookup("#nickTxt");
 		
 		if(nickTxt.getText().length()==0) {
 			comSrv.alertWindow("닉네임 미입력", "닉네임을 입력해주세요.", AlertType.WARNING);
-		}else if(dbSrv.overlapCheck(nickTxt.getText())) {
+			return false;
+		}else if(dbSrv.SearchMemberByNickname(nickTxt.getText())!=null) {
 			comSrv.alertWindow("닉네임중복", "중복된 닉네임 입니다.", AlertType.WARNING);
+			return false;
 		}else{
 			comSrv.alertWindow("사용가능", "사용 가능한 닉네임 입니다.", AlertType.INFORMATION);
+			return true;
 		}
 	}
 }

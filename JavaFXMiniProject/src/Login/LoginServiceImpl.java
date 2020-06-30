@@ -15,6 +15,8 @@ public class LoginServiceImpl implements LoginService {
 		TextField pwTxt = (TextField) root.lookup("#pwTxt");
 		System.out.println("ID : " + idTxt.getText() + ", PW : " + pwTxt.getText() + "가 저장되었습니다.");
 		
+		
+		
 		if(true) {
 			//로그인 성공시
 			comSrv.showWindow(new Stage(), "/GameSelect/GameSelect.fxml");
@@ -31,6 +33,7 @@ public class LoginServiceImpl implements LoginService {
 
 	@Override
 	public void OpenMembershipForm() {
+		comSrv.showWindow(new Stage(), "/Signup/Signup.fxml");
 		System.out.println("회원가입");
 	}
 }
