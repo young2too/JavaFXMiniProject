@@ -1,9 +1,10 @@
-package Ex12LoginFinal.Service;
+package Login;
 
+import DataBase.Member;
 import javafx.scene.Parent;
 
-public abstract interface LoginService {
-  public abstract void LoginProc(Parent paramParent);
-  public Parent OpenFindForm();
-  public Parent OpenMembershipForm();
+public interface LoginService {
+    void LoginProc(final Parent p0);
+    void OpenFindForm();
+    void OpenMembershipForm();
 }

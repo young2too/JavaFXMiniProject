@@ -1,56 +1,71 @@
-package Ex12LoginFinal.Service;
+package Login;
 
-import javafx.scene.Parent;
-import Ex12LoginFinal.Member;
-import Ex12LoginFinal.DAO.DatabaseService;
-import Ex12LoginFinal.DAO.DatabaseServiceImpl;
-
-import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import CommonService.CommonService;
+import CommonService.CommonServiceImpl;
+import DataBase.DataBaseService;
+import DataBase.DataBaseServiceImpl;
+import DataBase.Member;
+import javafx.event.ActionEvent;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.Parent;
 
 public class LoginServiceImpl implements LoginService {
-	
-	Member m = new Member();
-	
-	public  void LoginProc(Parent root) {
-    TextField idTxt = (TextField)root.lookup("#idTxt");
-    TextField pwTxt = (TextField)root.lookup("#pwTxt");
-    
-    DatabaseService db = new DatabaseServiceImpl();
-    boolean login = db.Select(idTxt.getText(), pwTxt.getText());
-    CommonService com = new CommonServiceImpl();
-    System.out.println(login);
-    if (login) {
-      com.ErrorMsg("로그인 되었습니다.");
-    } else {
-      com.ErrorMsg("아이디 패스워드가 틀립니다.");
-    }
-    System.out.println("ID : " + idTxt.getText() + ", PW : " + 
-      pwTxt.getText() + " 가 입력 되었습니다");
-  }
-	  
-  public Parent OpenMembershipForm() {
-    CommonService comSrv = new CommonServiceImpl();
-    Stage membershipForm = new Stage();
-    Parent form = comSrv.showWindow(membershipForm, "../Membership.fxml");
-    
-//    String[] items = { "20대 미만", "20대", "30대", "40대", "50대", "60대 이상" };
-//    MembershipService memberSrv = new MembershipServiceImpl();
-//    memberSrv.AddComboBox(form, Arrays.asList(items));
-//    
-    return form;
-  }
-
-@Override
-public Parent OpenFindForm() {
-	CommonService comSrv = new CommonServiceImpl();
-    Stage findForm = new Stage();
-    Parent form = comSrv.showWindow(findForm, "../Membership.fxml");
-    
-//    String[] items = { "20대 미만", "20대", "30대", "40대", "50대", "60대 이상" };
-//    MembershipService memberSrv = new MembershipServiceImpl();
-//    memberSrv.AddComboBox(form, Arrays.asList(items));
-    
-    return form;
+	private CommonService comSrv = new CommonServiceImpl();
+	static Member currentUser = new Member();
+	private DataBaseService dbSrv = new DataBaseServiceImpl();
+	@Override
+	public void LoginProc(Parent root) {
+		TextField idTxt = (TextField) root.lookup("#idTxt");
+		TextField pwTxt = (TextField) root.lookup("#pwTxt");
+		System.out.println("ID : " + idTxt.getText() + ", PW : " + pwTxt.getText() + "가 저장되었습니다.");
+		
+		if(idTxt.getText().length()==0) {
+			comSrv.alertWindow("오류", "아이디를 입력하세요", AlertType.INFORMATION);
+			idTxt.requestFocus();
+			return;
+		}
+		if(pwTxt.getText().length()==0) {
+			comSrv.alertWindow("오류", "비밀번호를 입력하세요", AlertType.INFORMATION);
+			pwTxt.requestFocus();
+			return;
+		}
+		
+		if(dbSrv.loginCheck(idTxt.getText(), pwTxt.getText())) {
+			//로그인 성공시
+			currentUser = dbSrv.SearchMemberByID(idTxt.getText());
+			comSrv.showWindow(new Stage(), "/GameSelect/GameSelect.fxml");
+			comSrv.WindowClose(root);
+		}else {
+			comSrv.alertWindow("실패", "비밀번호 또는 아이디가 틀립니다", AlertType.ERROR);
+			idTxt.clear();
+			pwTxt.clear();
+			idTxt.requestFocus();
+			return;
+		}
+		
 	}
+
+	
+	@Override
+	public void OpenFindForm() {
+		comSrv.showWindow(new Stage(), "/PwOk/PwOkScene.fxml");
+		System.out.println("아이디/비밀번호 찾기");
+	}
+
+	@Override
+	public void OpenMembershipForm() {
+		comSrv.showWindow(new Stage(), "/Signup/Signup.fxml");
+		System.out.println("회원가입");
+	}
+
+
+	public static Member getCurrentUser() {
+		// TODO Auto-generated method stub
+		return currentUser;
+	}
+
+
 }
