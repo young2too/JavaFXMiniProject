@@ -107,6 +107,7 @@ public class UpdateMyInfoServiceImpl implements UpdateMyInfoService {
 				return;
 			} else {
 				dbSrv.commit();
+				LoginServiceImpl.setCurrentUser(dbSrv.SearchMemberByID(newIDTxt.getText()));
 			}
 
 		} else if (nickFlag == false && IDFlag == true) {
@@ -117,6 +118,7 @@ public class UpdateMyInfoServiceImpl implements UpdateMyInfoService {
 				return;
 			} else {
 				dbSrv.commit();
+				LoginServiceImpl.setCurrentUser(dbSrv.SearchMemberByID(newIDTxt.getText()));
 			}
 		} else if (nickFlag == true && IDFlag == false) {
 			String sql = ("update member set nickname='" + newNickTxt.getText()+"' where id='" + currentID + "'");

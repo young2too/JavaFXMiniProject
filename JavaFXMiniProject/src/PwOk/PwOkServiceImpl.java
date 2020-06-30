@@ -8,11 +8,14 @@ import CommonService.CommonServiceImpl;
 import DataBase.DataBaseService;
 import DataBase.DataBaseServiceImpl;
 import DataBase.Member;
+import Login.LoginServiceImpl;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Stage;
 
 public class PwOkServiceImpl implements PwOkService {
 
@@ -25,18 +28,22 @@ public class PwOkServiceImpl implements PwOkService {
 	public void checkId(Parent pwOkForm) {
 		// TODO Auto-generated method stub
 		TextField idTxt = (TextField) pwOkForm.lookup("#idTxt"); // 내가 입력한 아이디
-		member.setID("k");
-		String id = member.getID(); // 기존회원가입 아이디
+		Button confirmIdBtn = (Button) pwOkForm.lookup("#confirmIdBtn");
 
 		if (idTxt.getText().length() == 0) {
-			comSrv.alertWindow("오류", "오류", AlertType.INFORMATION);
+			comSrv.alertWindow("오류", "내용이 없습니다", AlertType.INFORMATION);
 			return;
 		}
-
-		if (idTxt.getText().equals(id)) {
+		if (dbSrv.overlapCheck(idTxt.getText())==false) {
+			comSrv.alertWindow("없음", "아이디가 없습니다", AlertType.ERROR);
+			return;
+		}
+		member = dbSrv.SearchMemberByID(idTxt.getText());
+		if (idTxt.getText().equals(member.getID())) {
 			comSrv.alertWindow("확인 완료", "아이디가 일치합니다", AlertType.INFORMATION);
-		} else {
-			comSrv.alertWindow("오류 발생", "아이디가 일치하지않습니다", AlertType.ERROR);
+			confirmIdBtn.setDisable(!confirmIdBtn.isDisabled());
+			idTxt.setDisable(!idTxt.isDisabled()); // 아이디입력 make disabled
+
 		}
 	}
 
@@ -44,32 +51,32 @@ public class PwOkServiceImpl implements PwOkService {
 	public void checkQuiz(Parent pwOkForm) {
 		// TODO Auto-generated method stub
 		pwSrv = new PwOkServiceImpl();
+
 		TextField answerTxt = (TextField) pwOkForm.lookup("#answerTxt");
-		ComboBox<String> cmbQuiz = (ComboBox<String>)pwOkForm.lookup("#cmbQuiz");
+		ComboBox<String> cmbQuiz = (ComboBox<String>) pwOkForm.lookup("#cmbQuiz");
 		TextField newPwTxt = (TextField) pwOkForm.lookup("#newPwTxt");
 		TextField newPwOkTxt = (TextField) pwOkForm.lookup("#newPwOkTxt");
 		Button confirmPwBtn = (Button) pwOkForm.lookup("#confirmPwBtn");
 		Button confirmQuizBtn = (Button) pwOkForm.lookup("#confirmQuizBtn");
-		newPwTxt.setDisable(!newPwTxt.isDisable());
-		newPwOkTxt.setDisable(!newPwOkTxt.isDisable());
-		confirmPwBtn.setDisable(!confirmPwBtn.isDisable());
 
 		if (answerTxt.getText().length() == 0) {
 			comSrv.alertWindow("오류", "오류", AlertType.INFORMATION);
+		}
+
+		if (!isComboBox(pwOkForm)) {
 			return;
 		}
-		
-		Member m = new Member();
-		
-		String currentID="13";//로그인서비스에서 받아서 넣기
-		
-		m= dbSrv.SearchMemberByID(currentID);
-		if(!isComboBox(pwOkForm)) {
-			return;
-		}
-		if (answerTxt.getText().equals(m.getAnswer())&&cmbQuiz.getValue().equals(m.getQuiz())) {
+		if (answerTxt.getText().equals(member.getAnswer()) && cmbQuiz.getValue().equals(member.getQuiz())) {
 			comSrv.alertWindow("확인 완료", "개인정보가 확인이 완료되었습니다", AlertType.INFORMATION);
-			pwSrv.setCheckBtn(pwOkForm);
+//			pwSrv.setCheckBtn(pwOkForm);
+
+			confirmQuizBtn.setDisable(!confirmQuizBtn.isDisabled());
+			answerTxt.setDisable(!answerTxt.isDisabled());
+			cmbQuiz.setDisable(!cmbQuiz.isDisabled());// 콤보박스 make disabled
+
+			newPwTxt.setDisable(!newPwTxt.isDisable());
+			newPwOkTxt.setDisable(!newPwOkTxt.isDisable());
+			confirmPwBtn.setDisable(!confirmPwBtn.isDisable()); // 새로운비밀번호 make not disabled
 		} else {
 			comSrv.alertWindow("오류 발생", "개인정보가 일치하지않습니다", AlertType.ERROR);
 			return;
@@ -110,11 +117,11 @@ public class PwOkServiceImpl implements PwOkService {
 			return;
 		}
 		System.out.println("다 입력했으니 DB에 등록하면 됨");
-		String currentPw = "1";// 이건 로그인 서비스에서 받아와야 함
+		TextField id = (TextField)(pwOkForm.lookup("#idTxt"));// 이건 로그인 서비스에서 받아와야 함
 
 		String newPwOkTxt = txtFldMap.get(txtFldArr[1]).getText();
 
-		String sql = ("update member set pw='" + newPwOkTxt + "' where id='" + currentPw + "'");
+		String sql = ("update member set pw='" + newPwOkTxt + "' where id='" + id.getText() + "'");
 		// update member set pwOk=? where id=?
 		System.out.println(sql);
 		if (dbSrv.excuteSql(sql) == false) {
@@ -122,6 +129,13 @@ public class PwOkServiceImpl implements PwOkService {
 			return;
 		} else {
 			dbSrv.commit();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setHeaderText("정보수정 완료");
+			alert.setContentText("비밀번호가 완료되었습니다");
+			alert.setOnCloseRequest(e -> {
+				comSrv.WindowClose(pwOkForm);
+			});
+			alert.show();
 		}
 
 	}

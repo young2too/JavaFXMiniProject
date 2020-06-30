@@ -66,6 +66,8 @@ public class LoginServiceImpl implements LoginService {
 		// TODO Auto-generated method stub
 		return currentUser;
 	}
-
+	public static void setCurrentUser(Member m) {
+		currentUser = m;
+	}
 
 }

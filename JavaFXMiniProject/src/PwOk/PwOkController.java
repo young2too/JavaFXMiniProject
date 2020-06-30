@@ -40,7 +40,7 @@ public class PwOkController extends Controller implements Initializable {
 
 	public void cancelBtnAction() {
 		comSrv.WindowClose(pwOkForm);
-		comSrv.showWindow(new Stage(), "/MyInfo/MyInfo.fxml");
+		comSrv.showWindow(new Stage(), "/Login/Login.fxml");
 	}
 	
 	public void confirmIdBtnAction() {
@@ -53,7 +53,7 @@ public class PwOkController extends Controller implements Initializable {
 	
 	public void confirmPwBtnAction() {
 		pwOkSrv.registerNewPw(pwOkForm);
-		comSrv.showWindow(new Stage(), "/MyInfo/MyInfo.fxml");
+		
 	}
 	
 	@Override
@@ -63,4 +63,6 @@ public class PwOkController extends Controller implements Initializable {
 		pwOkSrv = new PwOkServiceImpl();
 		dbSrv = new DataBaseServiceImpl();
 	}
+
+	
 }
