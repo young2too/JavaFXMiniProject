@@ -108,7 +108,7 @@ public class Tetris extends Application {
       label5.setLayoutX(XMAX+5);
       
       Label label6 = new Label();
-      label6.setText("방향키 P : 게임 중지");
+      label6.setText("P 키 : 게임 중지");
       label6.setLayoutY(350);
       label6.setLayoutX(XMAX+5);
       
@@ -634,7 +634,6 @@ public class Tetris extends Application {
                      top = 0;
                      linesNo = 0;
                      comSrv.WindowClose(group);
-                     comSrv.showWindow(new Stage(), "/GameSelect/GameSelect.fxml");
                   }
                   if (game) {
                      MoveDown(object);
