@@ -24,7 +24,7 @@ package Breakoutgame;
 	    
 	    private void loadImage() {
 	        
-	        ImageIcon ii = new ImageIcon("src/resources/brick.png");
+	        ImageIcon ii = new ImageIcon("src/img/brick.png");
 	        image = ii.getImage();        
 	    }
 

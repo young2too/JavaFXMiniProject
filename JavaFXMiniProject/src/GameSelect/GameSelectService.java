@@ -20,7 +20,7 @@ public interface GameSelectService {
 	
 	public void playTetris() throws Exception;
 	public void playPoop();
-	public void playSpace();
+	public void playSpace() throws Exception;
 	public void playBlock();
 	
 	//score와highscore를 만들어서 score<highscore면 최고 점수로 점수를 업데이트.

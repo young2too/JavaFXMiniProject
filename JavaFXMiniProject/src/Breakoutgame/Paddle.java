@@ -21,7 +21,7 @@ package Breakoutgame;
 		
 		private void loadImage() {
 			
-			ImageIcon ii = new ImageIcon("src/resources/paddle.png");
+			ImageIcon ii = new ImageIcon("src/img/paddle.png");
 			image = ii.getImage();
 			
 		}

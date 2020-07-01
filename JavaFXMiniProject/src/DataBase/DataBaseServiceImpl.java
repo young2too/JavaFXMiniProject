@@ -7,6 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Login.LoginServiceImpl;
+
 public class DataBaseServiceImpl implements DataBaseService {
 	final static String DRIVER = "oracle.jdbc.driver.OracleDriver";
 	// final static String URL = "jdbc:oracle:thin:@192.168.100.10:1521:XE";//VM웨어
@@ -268,6 +270,27 @@ public class DataBaseServiceImpl implements DataBaseService {
 		}
 
 		return null;
+	}
+
+	@Override
+	public boolean updateScore(int score) {
+		// TODO Auto-generated method stub
+		try {
+			conn = DriverManager.getConnection(URL, USER, PASS);
+			String sql = "update member set score=score+"+score+" where id='"+LoginServiceImpl.getCurrentUser().getID()+"'";
+			ps = conn.prepareStatement(sql);
+			
+
+			if(ps.executeUpdate()==0) {
+				return false;
+			}else
+				return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}
+
 	}
 
 }

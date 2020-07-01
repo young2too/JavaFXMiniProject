@@ -112,7 +112,7 @@ public class GameSelectController extends Controller implements Initializable{
 	public void selectBlock() {
 		gameSrv.playBlock();
 	}
-	public void selectSpace() {
+	public void selectSpace() throws Exception {
 		gameSrv.playSpace();
 	}
 }

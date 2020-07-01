@@ -25,10 +25,7 @@ public class GameSelectImpl implements GameSelectService{
 		btnList.add(poopBtn);
 		btnList.add(blockBtn);
 		btnList.add(spaceBtn);
-		
-		btnList.get(0).setOnAction(e->{
-			//게임화면 버튼 엑션으로 순서대로 넣어준다.
-		});
+
 	}
 
 	@Override
@@ -118,7 +115,7 @@ public class GameSelectImpl implements GameSelectService{
 	}
 
 	@Override
-	public void playSpace() {
+	public void playSpace() throws Exception {
 		// TODO Auto-generated method stub
 		
 	}

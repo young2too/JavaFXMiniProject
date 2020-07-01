@@ -25,7 +25,7 @@ public class Ball extends Sprite {
 
     private void loadImage() {
 
-    	ImageIcon ii = new ImageIcon("src/resources/ball.png");
+    	ImageIcon ii = new ImageIcon("src/img/ball.png");
         image = ii.getImage();
     }
 

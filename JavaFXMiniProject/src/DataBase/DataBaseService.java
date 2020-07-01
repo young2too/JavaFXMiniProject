@@ -16,4 +16,5 @@ public interface DataBaseService {
 	
 	public boolean commit();
 	
+	public boolean updateScore(int score);
 }

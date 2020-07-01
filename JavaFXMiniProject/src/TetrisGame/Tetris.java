@@ -1,14 +1,19 @@
 package TetrisGame;
 
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import CommonService.CommonService;
+import CommonService.CommonServiceImpl;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -21,7 +26,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Tetris extends Application {
+public class Tetris extends Application{
 	// The variables
 	public static final int MOVE = 25;
 	public static final int SIZE = 25;
@@ -41,13 +46,13 @@ public class Tetris extends Application {
 	Text scoretext;
 	Text level;
 	boolean pauseFlag = false;
+	CommonService comSrv = new CommonServiceImpl();
 
 	@Override
 	public void start(Stage stage) throws Exception {
 		for (int[] a : MESH) {
 			Arrays.fill(a, 0);
 		}
-
 		Line line = new Line(XMAX, 0, XMAX, YMAX);
 
 		scoretext = new Text("Score: ");
@@ -61,9 +66,9 @@ public class Tetris extends Application {
 		level.setX(XMAX + 5);
 		level.setFill(Color.GREEN);
 
-		// pause��ư ����
+		// pause ư
 		Button pauseBtn = new Button("Pause");
-		pauseBtn.setOnAction(e->{
+		pauseBtn.setOnAction(e -> {
 			togglePause();
 		});
 		pauseBtn.setStyle("-fx-font: 20 arial;");
@@ -85,15 +90,17 @@ public class Tetris extends Application {
 		task = makeTask();
 		fall.schedule(task, 0, 300);
 	}
+
 	void togglePause() {
-		if(pauseFlag == false) {
+		if (pauseFlag == false) {
 			pauseFlag = true;
 			pause();
-		}else {
+		} else {
 			pauseFlag = false;
 			resume();
 		}
 	}
+
 	private void moveOnKeyPress(Form form) {//
 		scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
 			@Override
@@ -547,11 +554,11 @@ public class Tetris extends Application {
 			yb = rect.getY() + y * MOVE < YMAX;
 		return xb && yb && MESH[((int) rect.getX() / SIZE) + x][((int) rect.getY() / SIZE) - y] == 0;
 	}
-	
+
 	void pause() {
 		this.fall.cancel();
 	}
-	
+
 	TimerTask makeTask() {
 		TimerTask tempTask = new TimerTask() {
 			public void run() {
@@ -573,24 +580,22 @@ public class Tetris extends Application {
 							group.getChildren().add(over);
 							game = false;
 						}
-						// Exit
-						if (top == 15) {
-							System.exit(0);
-						}
 
 						if (game) {
 							MoveDown(object);
 							scoretext.setText("Score: " + Integer.toString(score));
 							level.setText("Lines: " + Integer.toString(linesNo));
+						} else {
+							comSrv.WindowClose(group);
 						}
 					}
 				});
 			}
 		};
 		return tempTask;
-		
+
 	}
-	
+
 	void resume() {
 		this.fall = new Timer();
 		task = makeTask();
