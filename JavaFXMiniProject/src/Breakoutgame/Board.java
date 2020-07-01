@@ -3,6 +3,13 @@ package Breakoutgame;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+
+import CommonService.CommonService;
+import CommonService.CommonServiceImpl;
+import DataBase.DataBaseService;
+import DataBase.DataBaseServiceImpl;
+
+import java.awt.Button;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -20,232 +27,242 @@ import java.awt.event.KeyEvent;
 public class Board extends JPanel {
 
 	private Timer timer;
-    private String message = "Game Over";
-    private Ball ball;
-    private Paddle paddle;
-    private Brick[] bricks;
-    private boolean inGame = true;
+	private String message = "Game Over";
+	private Ball ball;
+	private Paddle paddle;
+	private Brick[] bricks;
+	private int score = 0;
+	
+	public int getScore() {
+		return score;
+	}
+	
+	private boolean inGame = true;
+	CommonService comSrv = new CommonServiceImpl();
+	DataBaseService dbSrv = new DataBaseServiceImpl();
 
-    public Board() {
+	public Board() {
 
-        initBoard();
-    }
+		initBoard();
+	}
 
-    private void initBoard() {
+	private void initBoard() {
 
-        addKeyListener(new TAdapter());
-        setFocusable(true);
-        setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
+		addKeyListener(new TAdapter());
+		setFocusable(true);
+		setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
 
-        gameInit();
-    }
+		gameInit();
+	}
 
-    private void gameInit() {
+	private void gameInit() {
 
-        bricks = new Brick[Commons.N_OF_BRICKS];
+		bricks = new Brick[Commons.N_OF_BRICKS];
 
-        ball = new Ball();
-        paddle = new Paddle();
+		ball = new Ball();
+		paddle = new Paddle();
 
-        int k = 0;
+		int k = 0;
 
-        for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++) {
 
-            for (int j = 0; j < 6; j++) {
+			for (int j = 0; j < 6; j++) {
 
-                bricks[k] = new Brick(j * 40 + 30, i * 10 + 50);
-                k++;
-            }
-        }
+				bricks[k] = new Brick(j * 40 + 30, i * 10 + 50);
+				k++;
+			}
+		}
 
-        timer = new Timer(Commons.PERIOD, new GameCycle());
-        timer.start();
-    }
+		timer = new Timer(Commons.PERIOD, new GameCycle());
+		timer.start();
+	}
 
-    @Override
-    public void paintComponent(Graphics g) {
-        super.paintComponent(g);
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
 
-        Graphics2D g2d = (Graphics2D) g;
+		Graphics2D g2d = (Graphics2D) g;
 
-        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
+		g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        g2d.setRenderingHint(RenderingHints.KEY_RENDERING,
-                RenderingHints.VALUE_RENDER_QUALITY);
+		g2d.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 
-        if (inGame) {
+		if (inGame) {
+			drawObjects(g2d);
+		} else {
+			gameFinished(g2d);
 
-            drawObjects(g2d);
-        } else {
+		}
 
-            gameFinished(g2d);
-        }
+		Toolkit.getDefaultToolkit().sync();
+	}
 
-        Toolkit.getDefaultToolkit().sync();
-    }
+	private void drawObjects(Graphics2D g2d) {
+		Font font = new Font("Verdana", Font.BOLD, 13);
+		FontMetrics fontMetrics = this.getFontMetrics(font);
+		g2d.drawString("Score : " + Integer.toString(score),
+				(Commons.WIDTH - fontMetrics.stringWidth("Score : " + Integer.toString(score))) / 2,
+				Commons.HEIGHT-20);
+		
+		g2d.drawImage(ball.getImage(), ball.getX(), ball.getY(), ball.getImageWidth(), ball.getImageHeight(), this);
+		g2d.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(), paddle.getImageWidth(), paddle.getImageHeight(),
+				this);
+		
 
-    private void drawObjects(Graphics2D g2d) {
+		for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
 
-        g2d.drawImage(ball.getImage(), ball.getX(), ball.getY(),
-                ball.getImageWidth(), ball.getImageHeight(), this);
-        g2d.drawImage(paddle.getImage(), paddle.getX(), paddle.getY(),
-                paddle.getImageWidth(), paddle.getImageHeight(), this);
+			if (!bricks[i].isDestroyed()) {
+				g2d.drawImage(bricks[i].getImage(), bricks[i].getX(), bricks[i].getY(), bricks[i].getImageWidth(),
+						bricks[i].getImageHeight(), this);
+			}
+		}
+	}
 
-        for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
+	private void gameFinished(Graphics2D g2d) {
 
-            if (!bricks[i].isDestroyed()) {
+		Font font = new Font("Verdana", Font.BOLD, 18);
+		FontMetrics fontMetrics = this.getFontMetrics(font);
 
-                g2d.drawImage(bricks[i].getImage(), bricks[i].getX(),
-                        bricks[i].getY(), bricks[i].getImageWidth(),
-                        bricks[i].getImageHeight(), this);
-            }
-        }
-    }
+		g2d.setColor(Color.BLACK);
+		g2d.setFont(font);
+		g2d.drawString(message, (Commons.WIDTH - fontMetrics.stringWidth(message)) / 2, Commons.WIDTH / 2);
+		g2d.drawString("Score : " + Integer.toString(score),
+				(Commons.WIDTH - fontMetrics.stringWidth("Score : " + Integer.toString(score))) / 2,
+				Commons.HEIGHT / 2);
 
-    private void gameFinished(Graphics2D g2d) {
+	}
 
-        Font font = new Font("Verdana", Font.BOLD, 18);
-        FontMetrics fontMetrics = this.getFontMetrics(font);
+	private class TAdapter extends KeyAdapter {
 
-        g2d.setColor(Color.BLACK);
-        g2d.setFont(font);
-        g2d.drawString(message,
-                (Commons.WIDTH - fontMetrics.stringWidth(message)) / 2,
-                Commons.WIDTH / 2);
-    }
+		@Override
+		public void keyReleased(KeyEvent e) {
 
-    private class TAdapter extends KeyAdapter {
+			paddle.keyReleased(e);
+		}
 
-        @Override
-        public void keyReleased(KeyEvent e) {
+		@Override
+		public void keyPressed(KeyEvent e) {
 
-            paddle.keyReleased(e);
-        }
+			paddle.keyPressed(e);
+		}
+	}
 
-        @Override
-        public void keyPressed(KeyEvent e) {
+	private class GameCycle implements ActionListener {
 
-            paddle.keyPressed(e);
-        }
-    }
+		@Override
+		public void actionPerformed(ActionEvent e) {
 
-    private class GameCycle implements ActionListener {
+			doGameCycle();
+		}
+	}
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
+	private void doGameCycle() {
 
-            doGameCycle();
-        }
-    }
+		ball.move();
+		paddle.move();
+		checkCollision();
+		repaint();
+	}
 
-    private void doGameCycle() {
+	private void stopGame() {
 
-        ball.move();
-        paddle.move();
-        checkCollision();
-        repaint();
-    }
+		inGame = false;
+		timer.stop();
+	}
 
-    private void stopGame() {
+	private void checkCollision() {
 
-        inGame = false;
-        timer.stop();
-    }
+		if (ball.getRect().getMaxY() > Commons.BOTTOM_EDGE) {
 
-    private void checkCollision() {
+			stopGame();
+		}
 
-        if (ball.getRect().getMaxY() > Commons.BOTTOM_EDGE) {
+		for (int i = 0, j = 0; i < Commons.N_OF_BRICKS; i++) {
 
-            stopGame();
-        }
+			if (bricks[i].isDestroyed()) {
+				
+				j++;
+			}
 
-        for (int i = 0, j = 0; i < Commons.N_OF_BRICKS; i++) {
+			if (j == Commons.N_OF_BRICKS) {
+				
+				message = "congratulation!";
+				stopGame();
+			}
+		}
 
-            if (bricks[i].isDestroyed()) {
+		if ((ball.getRect()).intersects(paddle.getRect())) {
+			int paddleLPos = (int) paddle.getRect().getMinX();
+			int ballLPos = (int) ball.getRect().getMinX();
 
-                j++;
-            }
+			int first = paddleLPos + 8;
+			int second = paddleLPos + 16;
+			int third = paddleLPos + 24;
+			int fourth = paddleLPos + 32;
 
-            if (j == Commons.N_OF_BRICKS) {
+			if (ballLPos < first) {
 
-                message = "congratulation!";
-                stopGame();
-            }
-        }
+				ball.setXDir(-1);
+				ball.setYDir(-1);
+			}
 
-        if ((ball.getRect()).intersects(paddle.getRect())) {
+			if (ballLPos >= first && ballLPos < second) {
 
-            int paddleLPos = (int) paddle.getRect().getMinX();
-            int ballLPos = (int) ball.getRect().getMinX();
+				ball.setXDir(-1);
+				ball.setYDir(-1 * ball.getYDir());
+			}
 
-            int first = paddleLPos + 8;
-            int second = paddleLPos + 16;
-            int third = paddleLPos + 24;
-            int fourth = paddleLPos + 32;
+			if (ballLPos >= second && ballLPos < third) {
 
-            if (ballLPos < first) {
+				ball.setXDir(0);
+				ball.setYDir(-1);
+			}
 
-                ball.setXDir(-1);
-                ball.setYDir(-1);
-            }
+			if (ballLPos >= third && ballLPos < fourth) {
 
-            if (ballLPos >= first && ballLPos < second) {
+				ball.setXDir(1);
+				ball.setYDir(-1 * ball.getYDir());
+			}
 
-                ball.setXDir(-1);
-                ball.setYDir(-1 * ball.getYDir());
-            }
+			if (ballLPos > fourth) {
 
-            if (ballLPos >= second && ballLPos < third) {
+				ball.setXDir(1);
+				ball.setYDir(-1);
+			}
+		}
 
-                ball.setXDir(0);
-                ball.setYDir(-1);
-            }
+		for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
 
-            if (ballLPos >= third && ballLPos < fourth) {
+			if ((ball.getRect()).intersects(bricks[i].getRect())) {
+				
+				int ballLeft = (int) ball.getRect().getMinX();
+				int ballHeight = (int) ball.getRect().getHeight();
+				int ballWidth = (int) ball.getRect().getWidth();
+				int ballTop = (int) ball.getRect().getMinY();
 
-                ball.setXDir(1);
-                ball.setYDir(-1 * ball.getYDir());
-            }
+				Point pointRight = new Point(ballLeft + ballWidth + 1, ballTop);
+				Point pointLeft = new Point(ballLeft - 1, ballTop);
+				Point pointTop = new Point(ballLeft, ballTop - 1);
+				Point pointBottom = new Point(ballLeft, ballTop + ballHeight + 1);
 
-            if (ballLPos > fourth) {
+				if (!bricks[i].isDestroyed()) {
 
-                ball.setXDir(1);
-                ball.setYDir(-1);
-            }
-        }
+					if (bricks[i].getRect().contains(pointRight)) {
+						ball.setXDir(-1);
+					} else if (bricks[i].getRect().contains(pointLeft)) {
+						ball.setXDir(1);
+					}
 
-        for (int i = 0; i < Commons.N_OF_BRICKS; i++) {
+					if (bricks[i].getRect().contains(pointTop)) {
+						ball.setYDir(1);
+					} else if (bricks[i].getRect().contains(pointBottom)) {
+						ball.setYDir(-1);
+					}
 
-            if ((ball.getRect()).intersects(bricks[i].getRect())) {
-
-                int ballLeft = (int) ball.getRect().getMinX();
-                int ballHeight = (int) ball.getRect().getHeight();
-                int ballWidth = (int) ball.getRect().getWidth();
-                int ballTop = (int) ball.getRect().getMinY();
-
-                Point pointRight = new Point(ballLeft + ballWidth + 1, ballTop);
-                Point pointLeft = new Point(ballLeft - 1, ballTop);
-                Point pointTop = new Point(ballLeft, ballTop - 1);
-                Point pointBottom = new Point(ballLeft, ballTop + ballHeight + 1);
-
-                if (!bricks[i].isDestroyed()) {
-
-                    if (bricks[i].getRect().contains(pointRight)) {
-                        ball.setXDir(-1);
-                    } else if (bricks[i].getRect().contains(pointLeft)) {
-                        ball.setXDir(1);
-                    }
-
-                    if (bricks[i].getRect().contains(pointTop)) {
-                        ball.setYDir(1);
-                    } else if (bricks[i].getRect().contains(pointBottom)) {
-                        ball.setYDir(-1);
-                    }
-
-                    bricks[i].setDestroyed(true);
-                }
-            }
-        }
-    }
+					bricks[i].setDestroyed(true);
+					score+=10;
+				}
+			}
+		}
+	}
 }
