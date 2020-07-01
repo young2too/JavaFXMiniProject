@@ -47,12 +47,12 @@ package Breakoutgame;
 			
 			if (key == KeyEvent.VK_LEFT) {
 				
-				dx = -1;
+				dx = -2;
 			}
 			
 			if (key == KeyEvent.VK_RIGHT) {
 				
-				dx = 1;
+				dx = 2;
 			}
 			
 			

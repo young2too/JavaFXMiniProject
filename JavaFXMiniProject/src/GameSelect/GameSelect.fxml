@@ -23,7 +23,7 @@
       <RowConstraints maxHeight="147.0" minHeight="6.0" prefHeight="40.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button onAction="#selectSpace" fx:id="spaceBtn" disable="false" maxHeight="310.0" maxWidth="128.0" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" prefHeight="293.0" prefWidth="119.0" text="Button" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+      <Button onAction="#selectSpace" fx:id="spaceBtn" disable="true" maxHeight="310.0" maxWidth="128.0" minHeight="300.0" minWidth="100.0" mnemonicParsing="false" prefHeight="293.0" prefWidth="119.0" text="Button" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>

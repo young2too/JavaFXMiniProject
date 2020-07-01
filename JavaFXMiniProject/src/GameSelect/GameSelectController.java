@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import CommonService.CommonService;
 import CommonService.CommonServiceImpl;
@@ -34,6 +36,15 @@ public class GameSelectController extends Controller implements Initializable {
 	Button rankBtn;
 	Button backBtn;
 
+	Timer updateScore;
+	TimerTask updateScoreTxt;
+	
+	public void startTask() {
+		updateScore = new Timer();
+		updateScoreTxt = makeTask();
+		updateScore.schedule(updateScoreTxt, 0, 100);
+	}
+	
 	@Override
 	public void setRoot(Parent root) {
 		// TODO Auto-generated method stub
@@ -57,6 +68,23 @@ public class GameSelectController extends Controller implements Initializable {
 
 		this.ButtonListInitialize();
 	}
+	
+	TimerTask makeTask() {
+		TimerTask returnTask = new TimerTask() {
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				int currentScore = dbSrv.SearchMemberByID(LoginServiceImpl.getCurrentUser().getID()).getScore();
+
+				gameSrv.TextFieldEndScore(currentScore, root);
+				gameSrv.DisableGame(btnList, currentScore);
+
+			}
+			
+		};
+		return returnTask;
+	}
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -64,7 +92,7 @@ public class GameSelectController extends Controller implements Initializable {
 		comSrv = new CommonServiceImpl();
 		gameSrv = new GameSelectImpl();
 		dbSrv = new DataBaseServiceImpl();
-
+		
 	}
 
 	public void OpenRankForm() {
@@ -99,16 +127,12 @@ public class GameSelectController extends Controller implements Initializable {
 		btnList.add(blockBtn);
 		btnList.add(spaceBtn);
 		
-		int currentScore = LoginServiceImpl.getCurrentUser().getScore();
-
-		gameSrv.TextFieldEndScore(currentScore, root);
-		gameSrv.DisableGame(btnList, currentScore);
-
+		startTask();
 	}
 
 	public void selectTetris() throws Exception {
 		gameSrv.playTetris();
-		comSrv.WindowClose(root);
+		
 	}
 
 	public void selectPoop() {
