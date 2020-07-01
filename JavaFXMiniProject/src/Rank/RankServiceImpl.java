@@ -35,7 +35,11 @@ public class RankServiceImpl implements RankService{
 		setArr(rankPage);
 		
 		ArrayList<Member> members = dbSrv.select();
-		for(int i=0;i<5;i++) {
+		int size = 5;
+		if(members.size()<size) {
+			size = members.size();
+		}
+		for(int i=0;i<size;i++) {
 			nickArr[i].setText(members.get(i).getNickName());
 			scoreArr[i].setText(Integer.toString(members.get(i).getScore()));
 		}
