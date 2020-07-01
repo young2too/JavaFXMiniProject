@@ -28,7 +28,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Tetris extends Application{
+public class Tetris extends Application {
 	// The variables
 	public static final int MOVE = 25;
 	public static final int SIZE = 25;
@@ -110,17 +110,22 @@ public class Tetris extends Application{
 			public void handle(KeyEvent event) {
 				switch (event.getCode()) {
 				case RIGHT:
-					Controller.MoveRight(form);
+					if (!pauseFlag)
+						Controller.MoveRight(form);
 					break;
 				case DOWN:
-					MoveDown(form);
-					score++;
+					if (!pauseFlag) {
+						MoveDown(form);
+						score++;
+					}
 					break;
 				case LEFT:
-					Controller.MoveLeft(form);
+					if(!pauseFlag)
+						Controller.MoveLeft(form);
 					break;
 				case UP:
-					MoveTurn(form);
+					if(!pauseFlag)
+						MoveTurn(form);
 					break;
 				case P:
 					togglePause();
@@ -566,7 +571,7 @@ public class Tetris extends Application{
 		TimerTask tempTask = new TimerTask() {
 			public void run() {
 				Platform.runLater(new Runnable() {
-					
+
 					public void run() {
 						System.out.println(top);
 						if (object.a.getY() == 0 || object.b.getY() == 0 || object.c.getY() == 0
@@ -575,7 +580,7 @@ public class Tetris extends Application{
 						else
 							top = 0;
 
-						if (14>=top && top >= 2) {
+						if (14 >= top && top >= 2) {
 							// GAME OVER
 							Text over = new Text("GAME OVER");
 							over.setFill(Color.RED);
@@ -583,9 +588,10 @@ public class Tetris extends Application{
 							over.setY(250);
 							over.setX(10);
 							group.getChildren().add(over);
-							
+
 							game = false;
-						}if(top>=15) {
+						}
+						if (top >= 15) {
 							task.cancel();
 							game = true;
 							dbSrv.updateScore(score);
