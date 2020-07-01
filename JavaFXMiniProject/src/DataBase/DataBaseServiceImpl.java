@@ -280,7 +280,6 @@ public class DataBaseServiceImpl implements DataBaseService {
 			String sql = "update member set score=score+"+score+" where id='"+LoginServiceImpl.getCurrentUser().getID()+"'";
 			ps = conn.prepareStatement(sql);
 			
-
 			if(ps.executeUpdate()==0) {
 				return false;
 			}else

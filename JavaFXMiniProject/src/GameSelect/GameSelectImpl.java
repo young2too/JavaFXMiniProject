@@ -2,8 +2,11 @@ package GameSelect;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import Breakoutgame.Breakout;
 import CommonService.CommonService;
 import CommonService.CommonServiceImpl;
+import SpaceInvaders.SpaceInvaders;
 import TetrisGame.Tetris;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
@@ -117,13 +120,14 @@ public class GameSelectImpl implements GameSelectService{
 	@Override
 	public void playSpace() throws Exception {
 		// TODO Auto-generated method stub
-		
+		SpaceInvaders space = new SpaceInvaders();
+		space.start(new Stage());
 	}
 
 	@Override
 	public void playBlock() {
 		// TODO Auto-generated method stub
-		
+		Breakout.run();
 	}
 
 	

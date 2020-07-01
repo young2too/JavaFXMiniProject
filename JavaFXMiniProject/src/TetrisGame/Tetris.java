@@ -9,6 +9,8 @@ import java.util.TimerTask;
 
 import CommonService.CommonService;
 import CommonService.CommonServiceImpl;
+import DataBase.DataBaseService;
+import DataBase.DataBaseServiceImpl;
 import javafx.animation.PauseTransition;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -47,6 +49,7 @@ public class Tetris extends Application{
 	Text level;
 	boolean pauseFlag = false;
 	CommonService comSrv = new CommonServiceImpl();
+	DataBaseService dbSrv = new DataBaseServiceImpl();
 
 	@Override
 	public void start(Stage stage) throws Exception {
@@ -59,7 +62,7 @@ public class Tetris extends Application{
 		scoretext.setStyle("-fx-font: 20 arial;");
 		scoretext.setY(50);
 		scoretext.setX(XMAX + 5);
-
+		group.getChildren().clear();
 		level = new Text("Lines: ");
 		level.setStyle("-fx-font: 20 arial;");
 		level.setY(100);
@@ -88,7 +91,7 @@ public class Tetris extends Application{
 
 		fall = new Timer();
 		task = makeTask();
-		fall.schedule(task, 0, 300);
+		fall.schedule(task, 0, 100);
 	}
 
 	void togglePause() {
@@ -563,14 +566,16 @@ public class Tetris extends Application{
 		TimerTask tempTask = new TimerTask() {
 			public void run() {
 				Platform.runLater(new Runnable() {
+					
 					public void run() {
+						System.out.println(top);
 						if (object.a.getY() == 0 || object.b.getY() == 0 || object.c.getY() == 0
 								|| object.d.getY() == 0)
 							top++;
 						else
 							top = 0;
 
-						if (top == 2) {
+						if (14>=top && top >= 2) {
 							// GAME OVER
 							Text over = new Text("GAME OVER");
 							over.setFill(Color.RED);
@@ -578,15 +583,22 @@ public class Tetris extends Application{
 							over.setY(250);
 							over.setX(10);
 							group.getChildren().add(over);
+							
 							game = false;
+						}if(top>=15) {
+							task.cancel();
+							game = true;
+							dbSrv.updateScore(score);
+							score = 0;
+							top = 0;
+							linesNo = 0;
+							comSrv.WindowClose(group);
+							comSrv.showWindow(new Stage(), "/GameSelect/GameSelect.fxml");
 						}
-
 						if (game) {
 							MoveDown(object);
 							scoretext.setText("Score: " + Integer.toString(score));
 							level.setText("Lines: " + Integer.toString(linesNo));
-						} else {
-							comSrv.WindowClose(group);
 						}
 					}
 				});
@@ -599,6 +611,6 @@ public class Tetris extends Application{
 	void resume() {
 		this.fall = new Timer();
 		task = makeTask();
-		this.fall.schedule(task, 0, 300);
+		this.fall.schedule(task, 0, 100);
 	}
 }
