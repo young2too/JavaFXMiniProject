@@ -10,9 +10,13 @@ import DataBase.DataBaseService;
 import DataBase.DataBaseServiceImpl;
 import MyInfo.MyInfoService;
 import MyInfo.MyInfoServiceImpl;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
 public class UpdateMyInfoController extends Controller implements Initializable{
@@ -23,6 +27,15 @@ public class UpdateMyInfoController extends Controller implements Initializable{
 	UpdateMyInfoService upInfoSrv;
 	
 	Button backImgBtn;
+	Button overlapBtnNick;
+	Button overlapBtn;
+	Button confirmBtn;
+	Button cancelBtn;
+	Button passwordUpdateBtn;
+	@FXML
+	private CheckBox newNickCheckBox;
+	@FXML
+	private CheckBox newIDCheckBox;
 	
 	@Override
 	public void setRoot(Parent root) {
@@ -33,8 +46,31 @@ public class UpdateMyInfoController extends Controller implements Initializable{
 		
 		backImgBtn = (Button)updateMyInfoForm.lookup("#backImgBtn");
 		comSrv.setMouserBtnCursurEffect(backImgBtn);
+		overlapBtnNick = (Button)updateMyInfoForm.lookup("#overlapBtnNick");
+		comSrv.setMouserBtnCursurEffect(overlapBtnNick);
+		overlapBtn = (Button)updateMyInfoForm.lookup("#overlapBtn");
+		comSrv.setMouserBtnCursurEffect(overlapBtn);
+		confirmBtn = (Button)updateMyInfoForm.lookup("#confirmBtn");
+		comSrv.setMouserBtnCursurEffect(confirmBtn);
+		cancelBtn = (Button)updateMyInfoForm.lookup("#cancelBtn");
+		comSrv.setMouserBtnCursurEffect(cancelBtn);
+		passwordUpdateBtn = (Button)updateMyInfoForm.lookup("#passwordUpdateBtn");
+		comSrv.setMouserBtnCursurEffect(passwordUpdateBtn);
 		upInfoSrv.setCheckBoxListener(updateMyInfoForm);
 		upInfoSrv.setTextFieldToMyInfo(updateMyInfoForm);
+		newNickCheckBox.setOnMouseEntered(e->{
+			newNickCheckBox.setCursor(Cursor.HAND);
+		});
+		newNickCheckBox.setOnMouseExited(e->{
+			newNickCheckBox.setCursor(Cursor.DEFAULT);
+		});
+		newIDCheckBox.setOnMouseEntered(e->{
+			newIDCheckBox.setCursor(Cursor.HAND);
+		});
+		newIDCheckBox.setOnMouseExited(e->{
+			newIDCheckBox.setCursor(Cursor.DEFAULT);
+		});
+
 	}
 
 	
