@@ -8,11 +8,13 @@ import CommonService.CommonService;
 import CommonService.CommonServiceImpl;
 import SpaceInvaders.SpaceInvaders;
 import TetrisGame.Tetris;
+import View.GameViewManager;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
+import model.PANG;
 
 public class GameSelectImpl implements GameSelectService {
 
@@ -108,7 +110,8 @@ public class GameSelectImpl implements GameSelectService {
 	@Override
 	public void playPoop() {
 		// TODO Auto-generated method stub
-		
+		GameViewManager manager = new GameViewManager();
+		manager.createNewGame(PANG.cute);
 	}
 
 	@Override

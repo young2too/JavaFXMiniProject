@@ -2,11 +2,15 @@ package View;
 
 import java.util.Random;
 
+import CommonService.CommonService;
+import CommonService.CommonServiceImpl;
 import DataBase.DataBaseService;
 import DataBase.DataBaseServiceImpl;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -26,8 +30,10 @@ public class GameViewManager {
 	
 	private static final int GAME_WIDTH = 600;
 	private static final int GAME_HEIGHT = 800;
+	private final int PANGSPEED = 5;
+	private final int POOPSPEED = 14;
+	private final int MAXPOOPSIZE = 15;
 	
-	private Stage menuStage;
 	private ImageView pang;
 	
 	private boolean isLeftKeyPressed;
@@ -105,10 +111,9 @@ public class GameViewManager {
 		
 	}
 	
-	public void createNewGame(Stage menuStage,PANG choosenPang) {
-		this.menuStage = menuStage;
-		this.menuStage.hide();
+	public void createNewGame(PANG choosenPang) {
 		createBackground();
+		System.out.println(choosenPang);
 		createPang(choosenPang);
 		createGameElements(choosenPang);
 		createGameLoop();
@@ -135,14 +140,14 @@ public class GameViewManager {
 		
 		
 		
-		brownMeteors = new ImageView[3];
+		brownMeteors = new ImageView[MAXPOOPSIZE];
 		for(int i =0;i< brownMeteors.length;i++) {
 			brownMeteors[i] = new ImageView(METEOR_BROWN_IMAGE);
 			setNewElementPosition(brownMeteors[i]);
 			gamePane.getChildren().add(brownMeteors[i]);
 		}
 		
-		goldMeteors = new ImageView[3];
+		goldMeteors = new ImageView[MAXPOOPSIZE];
 		for(int i =0;i< brownMeteors.length;i++) {
 			goldMeteors[i] = new ImageView(METEOR_GOLD_IMAGE);
 			setNewElementPosition(goldMeteors[i]);
@@ -154,12 +159,12 @@ public class GameViewManager {
 	private void moveGameElements() {
 		star.setLayoutY(star.getLayoutY()+5);
 		for(int i=0;i<brownMeteors.length;i++) {
-			brownMeteors[i].setLayoutY(brownMeteors[i].getLayoutY()+7);
+			brownMeteors[i].setLayoutY(brownMeteors[i].getLayoutY()+POOPSPEED);
 			brownMeteors[i].setRotate(brownMeteors[i].getRotate()+4);
 		}
 		
 		for(int i=0;i<goldMeteors.length;i++) {
-			goldMeteors[i].setLayoutY(goldMeteors[i].getLayoutY()+7);
+			goldMeteors[i].setLayoutY(goldMeteors[i].getLayoutY()+POOPSPEED);
 			goldMeteors[i].setRotate(goldMeteors[i].getRotate()+4);
 		}
 	}
@@ -172,12 +177,16 @@ public class GameViewManager {
 		for(int i=0;i<brownMeteors.length;i++) {
 			if(brownMeteors[i].getLayoutY()>900) {
 				setNewElementPosition(brownMeteors[i]);
+				points++;
+				pointsLabel.setText("POINT : "+points);
 			}
 		}
 		
 		for(int i=0;i<goldMeteors.length;i++) {
 			if(goldMeteors[i].getLayoutY()>900) {
 				setNewElementPosition(goldMeteors[i]);
+				points++;
+				pointsLabel.setText("POINT : "+points);
 			}
 		}
 		
@@ -185,7 +194,7 @@ public class GameViewManager {
 	
 	
 	private void setNewElementPosition(ImageView image) {
-		image.setLayoutX(randomPositionGenerator.nextInt(370));
+		image.setLayoutX(randomPositionGenerator.nextInt(480));
 		image.setLayoutY(-(randomPositionGenerator.nextInt(3200)+600));
 	}
 	
@@ -221,7 +230,7 @@ public class GameViewManager {
 			}
 			pang.setRotate(angle);
 			if(pang.getLayoutX() > -20) {
-				pang.setLayoutX(pang.getLayoutX()-3);
+				pang.setLayoutX(pang.getLayoutX()-PANGSPEED);
 			}
 		}
 		if(isRightKeyPressed && !isLeftKeyPressed) {
@@ -230,7 +239,7 @@ public class GameViewManager {
 			}
 			pang.setRotate(angle);
 			if(pang.getLayoutX() < 522) {
-				pang.setLayoutX(pang.getLayoutX()+3);
+				pang.setLayoutX(pang.getLayoutX()+PANGSPEED);
 			}
 		}
 		if(!isLeftKeyPressed && !isRightKeyPressed) {
@@ -287,9 +296,7 @@ public class GameViewManager {
 			
 			points++;
 			String textToSet = "POINT : ";
-			if(points<10) {
-				textToSet = textToSet + "0";
-			}
+			
 			pointsLabel.setText(textToSet+points);
 		}
 		
@@ -305,16 +312,25 @@ public class GameViewManager {
 				setNewElementPosition(goldMeteors[i]);
 			}
 		}
-		db.updateScore(points);
+		
 	}
 	
 	private void removeLife() {
 		gamePane.getChildren().remove(playerLifes[playerLife]);
 		playerLife--;
 		if(playerLife<0) {
-			gameStage.close();
+			
 			gameTimer.stop();
-			menuStage.show();
+			gamePane.getChildren().clear();
+			Alert alertGameEnd = new Alert(AlertType.INFORMATION);
+			alertGameEnd.setHeaderText("게임 종료!");
+			alertGameEnd.setContentText("당신의 점수 : "+(points*10));
+			alertGameEnd.setOnCloseRequest(e->{
+				db.updateScore(points*10);
+				playerLife=3;
+				gameStage.close();
+			});
+			alertGameEnd.show();
 		}
 	}
 	
