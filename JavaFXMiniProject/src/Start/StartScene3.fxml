@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Start.StartController">
+   <center>
+      <ImageView fitHeight="388.0" fitWidth="416.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="/img/StartScene3.gif" />
+         </image>
+      </ImageView>
+   </center>
+   <right>
+      <Button fx:id="startBtn" mnemonicParsing="false" onAction="#startBtnAction" prefHeight="50.0" prefWidth="108.0" style="-fx-background-color: blue;" text="게임시작" textFill="#f4f7f8" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets right="20.0" />
+         </BorderPane.margin>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </right>
+</BorderPane>
