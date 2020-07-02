@@ -10,8 +10,7 @@
 
 <!-- .. -->
 
-<BorderPane prefHeight="399.0" prefWidth="603.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
-fx:controller="Rank.RankController">
+<BorderPane prefHeight="399.0" prefWidth="603.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Rank.RankController">
    <padding>
       <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
    </padding>
@@ -155,14 +154,14 @@ fx:controller="Rank.RankController">
       <Pane prefHeight="71.0" prefWidth="563.0" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="71.0" fitWidth="78.0" layoutX="23.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
-            <Label layoutX="192.0" layoutY="16.0" text="랭 킹 확 인" textFill="#170011">
+            <Label layoutX="192.0" layoutY="16.0" text="랭 킹 확 인" textFill="#b93dee">
                <font>
-                  <Font size="36.0" />
+                  <Font name="Yet R" size="40.0" />
                </font>
             </Label>
-            <Button onAction="#backImgBtnAction" fx:id="backImgBtn" layoutX="16.0" layoutY="6.0" mnemonicParsing="false">
+            <Button fx:id="backImgBtn" layoutX="16.0" layoutY="6.0" mnemonicParsing="false" onAction="#backImgBtnAction" style="-fx-background-color: white;">
                <graphic>
-                  <ImageView  fitHeight="53.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="60.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../img/돌아가기.png" />
                      </image>
