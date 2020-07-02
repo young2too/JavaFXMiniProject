@@ -79,7 +79,7 @@
    <top>
       <HBox prefHeight="44.0" prefWidth="400.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="backImgBtn" minHeight="50.0" minWidth="70.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0">
+            <Button onAction="#cancelBtnAction" fx:id="backImgBtn" minHeight="50.0" minWidth="70.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="70.0">
                <graphic>
                   <ImageView fitHeight="54.0" fitWidth="72.0" pickOnBounds="true">
                      <image>

@@ -72,6 +72,7 @@ public class UpdateMyInfoController extends Controller implements Initializable{
 		});
 
 	}
+	
 
 	
 
