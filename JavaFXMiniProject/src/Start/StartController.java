@@ -13,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class StartController extends Controller implements Initializable {
+
+	
 	Parent startForm;
 	CommonService comSrv;
 	Button startBtn;
@@ -27,8 +29,9 @@ public class StartController extends Controller implements Initializable {
 	public void setRoot(Parent root) {
 		// TODO Auto-generated method stub
 		this.startForm = root;
-		startBtn = (Button)startForm.lookup("startBtn");
-//		comSrv.setMouserBtnCursurEffect(startBtn);
+		startBtn = (Button)startForm.lookup("#startBtn");
+		comSrv.setMouserBtnCursurEffect(startBtn);
+
 	}
 	
 	public void startBtnAction(ActionEvent event) {

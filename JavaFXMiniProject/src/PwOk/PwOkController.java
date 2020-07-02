@@ -10,15 +10,10 @@ import CommonService.Controller;
 import DataBase.DataBaseService;
 import DataBase.DataBaseServiceImpl;
 import DataBase.Member;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.AccessibleAction;
 import javafx.scene.Cursor;
 import javafx.scene.Parent;
-import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
