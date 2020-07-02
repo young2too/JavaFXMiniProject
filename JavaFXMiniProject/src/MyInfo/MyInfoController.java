@@ -19,6 +19,9 @@ public class MyInfoController extends Controller implements Initializable{
 	private DataBaseService dbSrv;
 	private MyInfoService myInfoSrv;
 	Button backImgBtn;
+	Button confirmBtn;
+	Button cancelBtn;
+	Button myInfoUpdateBtn;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -37,6 +40,16 @@ public class MyInfoController extends Controller implements Initializable{
 		backImgBtn = (Button)myInfoPage.lookup("#backImgbtn");
 		comSrv.setMouserBtnCursurEffect(backImgBtn);
 		myInfoSrv.setLabelsToMyInfo(myInfoPage);
+		confirmBtn = (Button)myInfoPage.lookup("#confirmBtn");
+		comSrv.setMouserBtnCursurEffect(confirmBtn);
+		myInfoSrv.setLabelsToMyInfo(myInfoPage);
+		cancelBtn = (Button)myInfoPage.lookup("#cancelBtn");
+		comSrv.setMouserBtnCursurEffect(cancelBtn);
+		myInfoSrv.setLabelsToMyInfo(myInfoPage);
+		myInfoUpdateBtn = (Button)myInfoPage.lookup("#myInfoUpdateBtn");
+		comSrv.setMouserBtnCursurEffect(myInfoUpdateBtn);
+		myInfoSrv.setLabelsToMyInfo(myInfoPage);
+		
 		
 	
 	}
