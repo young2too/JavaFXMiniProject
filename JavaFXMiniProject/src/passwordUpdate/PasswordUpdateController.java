@@ -19,6 +19,9 @@ public class PasswordUpdateController extends Controller implements Initializabl
 	PasswordUpdateService passSrv;
 	
 	Button backImgBtn;
+	Button confirmBtn;
+	Button cancelBtn;
+	
 	@Override
 	public void setRoot(Parent root) {
 		// TODO Auto-generated method stub
@@ -26,6 +29,11 @@ public class PasswordUpdateController extends Controller implements Initializabl
 		
 		backImgBtn = (Button)passwordUpdateForm.lookup("#backImgBtn");
 		comSrv.setMouserBtnCursurEffect(backImgBtn);
+		confirmBtn = (Button)passwordUpdateForm.lookup("#confirmBtn");
+		comSrv.setMouserBtnCursurEffect(confirmBtn);
+		cancelBtn = (Button)passwordUpdateForm.lookup("#cancelBtn");
+		comSrv.setMouserBtnCursurEffect(cancelBtn);
+		
 	}
 	
 	public void cancelBtnAction() {
