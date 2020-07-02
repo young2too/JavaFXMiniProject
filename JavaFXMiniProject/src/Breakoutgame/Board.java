@@ -51,7 +51,7 @@ public class Board extends JPanel {
 		addKeyListener(new TAdapter());
 		setFocusable(true);
 		setPreferredSize(new Dimension(Commons.WIDTH, Commons.HEIGHT));
-
+		
 		gameInit();
 	}
 
@@ -64,9 +64,9 @@ public class Board extends JPanel {
 
 		int k = 0;
 
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 8; i++) {
 
-			for (int j = 0; j < 6; j++) {
+			for (int j = 0; j < 11; j++) {
 
 				bricks[k] = new Brick(j * 40 + 30, i * 10 + 50);
 				k++;
@@ -98,7 +98,7 @@ public class Board extends JPanel {
 	}
 
 	private void drawObjects(Graphics2D g2d) {
-		Font font = new Font("Verdana", Font.BOLD, 13);
+		Font font = new Font("Verdana", Font.BOLD, 25);
 		FontMetrics fontMetrics = this.getFontMetrics(font);
 		g2d.drawString("Score : " + Integer.toString(score),
 				(Commons.WIDTH - fontMetrics.stringWidth("Score : " + Integer.toString(score))) / 2,
@@ -120,7 +120,7 @@ public class Board extends JPanel {
 
 	private void gameFinished(Graphics2D g2d) {
 
-		Font font = new Font("Verdana", Font.BOLD, 18);
+		Font font = new Font("Verdana", Font.BOLD, 20);
 		FontMetrics fontMetrics = this.getFontMetrics(font);
 
 		g2d.setColor(Color.BLACK);

@@ -32,20 +32,20 @@ public class Ball extends Sprite {
     void move() {
         x += xdir;
         y += ydir;
-
-        if (x == 0) {
-            setXDir(1);
-        }
-
+        
+        if (x == 0) {	
+            setXDir(1);	
+        }	
+        
         if (x == Commons.WIDTH - imageWidth) {
-            setXDir(-1);
-        }
-
+            setXDir(-1);					
+        }	
+        
         if (y == 0) {
             setYDir(1);
         }
     }
-
+    
     private void resetState() {
 
         x = Commons.INIT_BALL_X;

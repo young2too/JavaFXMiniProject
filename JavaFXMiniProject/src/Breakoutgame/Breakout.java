@@ -7,7 +7,10 @@ import DataBase.DataBaseServiceImpl;
 import GameSelect.GameSelectImpl;
 import GameSelect.GameSelectService;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
+import java.awt.Toolkit;
+import java.awt.Window;
 
 public class Breakout extends JFrame {
 
@@ -23,9 +26,11 @@ public class Breakout extends JFrame {
 
 		add(game);
 		setTitle("Breakout");
-
+		Dimension des = Toolkit.getDefaultToolkit().getScreenSize();
+		
 		setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		setLocationRelativeTo(null);
+		setLocation((int)des.getWidth()/2-(Commons.WIDTH/2), (int)des.getHeight()/2-(Commons.HEIGHT/2));
 		setResizable(false);
 		pack();
 	}
