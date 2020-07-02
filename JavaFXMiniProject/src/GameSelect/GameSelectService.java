@@ -22,6 +22,7 @@ public interface GameSelectService {
 	public void playPoop();
 	public void playSpace() throws Exception;
 	public void playBlock();
+	public void logoutProc(Parent root);
 	
 	//score와highscore를 만들어서 score<highscore면 최고 점수로 점수를 업데이트.
 	//gamescore.set블라블라로 업데이트 해준다.-->새로운 메서드 만들기!!!

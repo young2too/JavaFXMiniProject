@@ -2,6 +2,7 @@ package GameSelect;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import Breakoutgame.Breakout;
 import CommonService.CommonService;
@@ -11,13 +12,15 @@ import TetrisGame.Tetris;
 import View.GameViewManager;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 import model.PANG;
 
 public class GameSelectImpl implements GameSelectService {
-
+	
 	@Override
 	public void SelectProc(Parent root) {
 		// TODO Auto-generated method stub
@@ -126,6 +129,20 @@ public class GameSelectImpl implements GameSelectService {
 		// TODO Auto-generated method stub
 		Breakout.run();
 		
+	}
+
+	@Override
+	public void logoutProc(Parent root) {
+		// TODO Auto-generated method stub
+		CommonService comSrv = new CommonServiceImpl();
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setHeaderText("로그아웃");
+		alert.setContentText("로그아웃 하시겠습니까?");
+		Optional<ButtonType> result = alert.showAndWait();
+		if(result.get() == ButtonType.OK) {
+			comSrv.WindowClose(root);
+			comSrv.showWindow(new Stage(), "/Login/Login.fxml");
+		}
 	}
 
 }

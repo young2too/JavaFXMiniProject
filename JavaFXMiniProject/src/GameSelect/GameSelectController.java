@@ -110,8 +110,9 @@ public class GameSelectController extends Controller implements Initializable {
 	public void CancleProc(ActionEvent event) {
 		// 되돌아가는 작업
 		System.out.println("되돌아가기(=선택메뉴 창 닫기)");
-		comSrv.WindowClose(event);
-		comSrv.showWindow(new Stage(), "/Login/login.fxml");
+		
+		gameSrv.logoutProc(root);
+		
 	}
 
 	public void ButtonListInitialize() {
