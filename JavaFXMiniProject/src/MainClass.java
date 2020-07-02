@@ -13,10 +13,7 @@ public class MainClass extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		// TODO Auto-generated method stub
 		
-		//comSrv.showWindow(primaryStage, "/UpdateMyInfo/UpdateMyInfo.fxml");
-		comSrv.showWindow(primaryStage, "/Login/Login.fxml");
-		//comSrv.showWindow(new Stage(), "/passwordUpdate/passwordUpdate.fxml");
-		
+		comSrv.showWindow(primaryStage, "/Start/StartScene3.fxml");
 		/*
 		 * 각 FXML 파일은 해당 패키지에 넣고
 		 * FXML파일의 컨트롤러도 해당 패키지에 넣습니다
