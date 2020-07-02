@@ -112,7 +112,7 @@ public class GameSelectController extends Controller implements Initializable {
 		System.out.println("되돌아가기(=선택메뉴 창 닫기)");
 		
 		gameSrv.logoutProc(root);
-		
+		//
 	}
 
 	public void ButtonListInitialize() {
