@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.paint.*?>
@@ -10,14 +11,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="418.0" prefWidth="563.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Signup.SignupController">
+<AnchorPane prefHeight="418.0" prefWidth="563.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Signup.SignupController">
    <children>
       <Pane layoutX="3.0" layoutY="-3.0" prefHeight="256.0" prefWidth="567.0" />
       <HBox prefHeight="77.0" prefWidth="589.0">
          <children>
-            <Label alignment="CENTER" prefHeight="77.0" prefWidth="582.0" text="회원가입" textFill="#220202">
+            <Label alignment="CENTER" prefHeight="77.0" prefWidth="582.0" text="회원가입" textFill="#b93dee">
                <font>
-                  <Font size="36.0" />
+                  <Font name="Yet R" size="40.0" />
                </font>
                <HBox.margin>
                   <Insets left="10.0" />
@@ -90,6 +91,9 @@
                <HBox.margin>
                   <Insets bottom="10.0" left="170.0" right="10.0" top="10.0" />
                </HBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
             <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#CancelProc" prefHeight="40.0" prefWidth="100.0" text="취소">
                <padding>
@@ -98,6 +102,9 @@
                <HBox.margin>
                   <Insets bottom="10.0" left="50.0" right="10.0" top="10.0" />
                </HBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
          </children>
       </HBox>
@@ -139,23 +146,29 @@
       </VBox>
       <VBox layoutX="482.0" layoutY="83.0" prefHeight="176.0" prefWidth="95.0">
          <children>
-            <Button fx:id="idChk" onAction="#idChk" mnemonicParsing="false" text="중복확인">
+            <Button fx:id="idChk" mnemonicParsing="false" onAction="#idChk" text="중복확인">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" />
                </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
-            <Button fx:id="nickChk" onAction="#nickChk" mnemonicParsing="false" text="중복확인">
+            <Button fx:id="nickChk" mnemonicParsing="false" onAction="#nickChk" text="중복확인">
                <VBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="10.0" />
                </VBox.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
          </children>
       </VBox>
-      <VBox layoutY="247.0" prefHeight="110.0" prefWidth="589.0">
+      <VBox layoutY="247.0" prefHeight="110.0" prefWidth="589.0" spacing="10.0">
          <children>
-            <ComboBox fx:id="cmbQuiz" prefHeight="31.0" prefWidth="262.0" promptText="비밀번호 분실시 질문">
+            <ComboBox fx:id="cmbQuiz" prefHeight="29.0" prefWidth="262.0" promptText="비밀번호 분실시 질문">
                <VBox.margin>
-                  <Insets bottom="10.0" left="220.0" right="10.0" top="10.0" />
+                  <Insets left="220.0" />
                </VBox.margin>
             </ComboBox>
             <TextField fx:id="cmbTxt" prefHeight="31.0" prefWidth="262.0" promptText="입력">
@@ -164,10 +177,16 @@
                </VBox.margin>
             </TextField>
          </children>
+         <padding>
+            <Insets top="10.0" />
+         </padding>
       </VBox>
-      <Button fx:id="backBtn" onAction="#CancelProc" layoutX="5.0" layoutY="15.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="49.0">
+      <Button fx:id="backBtn" layoutX="5.0" layoutY="17.0" minHeight="57.0" minWidth="70.0" mnemonicParsing="false" onAction="#CancelProc" prefHeight="57.0" prefWidth="70.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0">
+         <padding>
+            <Insets left="10.0" top="10.0" />
+         </padding>
          <graphic>
-            <ImageView fx:id="img" fitHeight="45.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitHeight="71.0" fitWidth="85.0" pickOnBounds="true">
                <image>
                   <Image url="@../img/돌아가기.png" />
                </image>
