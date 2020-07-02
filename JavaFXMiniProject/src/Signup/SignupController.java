@@ -15,9 +15,11 @@ import PwOk.PwOkServiceImpl;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -32,7 +34,8 @@ public class SignupController extends Controller implements Initializable {
 	private Button signBtn;
 	@FXML
 	private Button cancelBtn;
-
+	@FXML
+	private ComboBox<String> cmbQuiz;
 	private Parent Signup;
 	private CommonService comSrv;
 	private SignupService signSrv;
@@ -60,6 +63,14 @@ public class SignupController extends Controller implements Initializable {
 		cancelBtn = (Button) Signup.lookup("#cancelBtn");
 		comSrv.setMouserBtnCursurEffect(cancelBtn);
 		pwOkSrv.AddComboBox(Signup);
+		cmbQuiz.setOnMouseEntered(e->{
+			cmbQuiz.setCursor(Cursor.HAND);
+		});
+		cmbQuiz.setOnMouseExited(e->{
+			cmbQuiz.setCursor(Cursor.DEFAULT);
+		});
+
+		
 	}
 
 	@Override
@@ -137,8 +148,6 @@ public class SignupController extends Controller implements Initializable {
 			comSrv.alertWindow("오류", "가입할 수 없습니다", AlertType.ERROR);
 			return;
 		}
-		
-
 	}
 }
 
