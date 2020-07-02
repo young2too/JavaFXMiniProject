@@ -194,7 +194,7 @@ public class GameViewManager {
 	//
 	
 	private void setNewElementPosition(ImageView image) {
-		image.setLayoutX(randomPositionGenerator.nextInt(480));
+		image.setLayoutX(randomPositionGenerator.nextInt(540));
 		image.setLayoutY(-(randomPositionGenerator.nextInt(3200)+600));
 	}
 	
@@ -324,9 +324,9 @@ public class GameViewManager {
 			gamePane.getChildren().clear();
 			Alert alertGameEnd = new Alert(AlertType.INFORMATION);
 			alertGameEnd.setHeaderText("게임 종료!");
-			alertGameEnd.setContentText("당신의 점수 : "+(points*10));
+			alertGameEnd.setContentText("당신의 점수 : "+(points*2));
 			alertGameEnd.setOnCloseRequest(e->{
-				db.updateScore(points*10);
+				db.updateScore(points*2);
 				playerLife=3;
 				gameStage.close();
 			});
