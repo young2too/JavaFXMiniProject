@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="280.0" prefWidth="500.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login.LoginController">
    <children>
-      <Label alignment="CENTER" prefHeight="70.0" prefWidth="500.0" text="로그인">
+      <Label alignment="CENTER" prefHeight="70.0" prefWidth="500.0" text="로그인" textFill="#b93dee">
          <font>
-            <Font size="32.0" />
+            <Font name="Yet R" size="40.0" />
          </font>
       </Label>
       <GridPane layoutX="32.0" layoutY="49.0" prefHeight="231.0" prefWidth="436.0">
@@ -44,6 +45,9 @@
                <GridPane.margin>
                   <Insets bottom="30.0" left="30.0" />
                </GridPane.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
             <Button fx:id="LoginBtn" mnemonicParsing="false" onAction="#LoginProc" prefHeight="86.0" prefWidth="132.0" text="로그인" GridPane.columnIndex="1" GridPane.rowSpan="2">
                <font>
@@ -51,7 +55,10 @@
                </font>
                <GridPane.margin>
                   <Insets />
-               </GridPane.margin></Button>
+               </GridPane.margin>
+               <effect>
+                  <DropShadow />
+               </effect></Button>
             <Button fx:id="FindBtn" mnemonicParsing="false" onAction="#OpenFindForm" prefHeight="33.0" prefWidth="211.0" text="아이디/비밀번호 찾기" GridPane.columnSpan="2" GridPane.rowIndex="2">
                <font>
                   <Font size="18.0" />
@@ -59,6 +66,9 @@
                <GridPane.margin>
                   <Insets bottom="30.0" right="10.0" />
                </GridPane.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
             <Button fx:id="CancelBtn" mnemonicParsing="false" onAction="#CancelProc" prefWidth="100.0" text="취소" GridPane.rowIndex="2">
                <font>
@@ -67,6 +77,9 @@
                <GridPane.margin>
                   <Insets bottom="30.0" right="200.0" />
                </GridPane.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
             </Button>
          </children>
          <columnConstraints>

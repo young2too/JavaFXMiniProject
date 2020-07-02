@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<!-- .. -->
+
+<BorderPane prefHeight="350.0" prefWidth="580.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PwOk.PwOkController">
+   <center>
+      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="237.0" prefWidth="540.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="199.0" minWidth="10.0" prefWidth="164.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="327.0" minWidth="10.0" prefWidth="287.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="234.0" minWidth="10.0" prefWidth="89.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="아이디 " textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <Label text="가입시 선택한 질문" textAlignment="CENTER" GridPane.rowIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <Label text="질문에 대한 답변" textAlignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </Label>
+            <ComboBox fx:id="cmbQuiz" prefHeight="23.0" prefWidth="287.0" promptText="가입시 선택한 질문을 고르세요" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="idTxt" promptText="아이디를 입력하세요" GridPane.columnIndex="1" />
+            <TextField fx:id="answerTxt" prefHeight="23.0" prefWidth="149.0" promptText="질문에 대한 답을 입력하세요" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="confirmIdBtn" mnemonicParsing="false" onAction="#confirmIdBtnAction" text="확인" GridPane.columnIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button fx:id="confirmQuizBtn" mnemonicParsing="false" onAction="#confirmQuizBtnAction" text="확인" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button fx:id="confirmPwBtn" disable="true" mnemonicParsing="false" onAction="#confirmPwBtnAction" text="확인" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets left="20.0" />
+               </GridPane.margin>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Label text="새 비밀번호" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label text="새 비밀번호 확인" GridPane.rowIndex="4">
+               <GridPane.margin>
+                  <Insets bottom="20.0" right="20.0" top="20.0" />
+               </GridPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="newPwTxt" disable="true" promptText="새로운 비밀번호를 입력하세요" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <PasswordField fx:id="newPwOkTxt" disable="true" prefHeight="27.0" prefWidth="248.0" promptText="새로운 비밀번호를 다시 입력하세요" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="60.0" />
+         </BorderPane.margin>
+      </GridPane>
+   </center>
+   <top>
+      <HBox prefHeight="76.0" prefWidth="580.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="backImgBtn" minHeight="50.0" minWidth="70.0" mnemonicParsing="false" onAction="#cancelBtnAction" prefHeight="40.0" prefWidth="50.0">
+               <HBox.margin>
+                  <Insets left="30.0" top="30.0" />
+               </HBox.margin>
+               <graphic>
+                  <ImageView fitHeight="61.0" fitWidth="80.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../img/돌아가기.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Button>
+            <Label text="비밀번호 찾기" textFill="#b93dee" translateX="100.0">
+               <HBox.margin>
+                  <Insets bottom="20.0" right="20.0" top="20.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" right="10.0" top="10.0" />
+               </padding>
+               <font>
+                  <Font name="Yet R" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
