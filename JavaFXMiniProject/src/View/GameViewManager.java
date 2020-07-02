@@ -191,7 +191,7 @@ public class GameViewManager {
 		}
 		
 	}
-	
+	//
 	
 	private void setNewElementPosition(ImageView image) {
 		image.setLayoutX(randomPositionGenerator.nextInt(480));
