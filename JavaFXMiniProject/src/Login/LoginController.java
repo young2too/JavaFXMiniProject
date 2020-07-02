@@ -10,32 +10,35 @@ import CommonService.Controller;
 import java.net.URL;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 public class LoginController extends Controller implements Initializable
 {
-	
-	@FXML
-	private Button MembershipBtn; 
-	@FXML
-	private Button LoginBtn;
-	@FXML
-	private Button FindBtn;
-	@FXML
-	private Button CancelBtn;
-	
     private Parent root;
     private LoginService loginSrv;
     private CommonService comSrv;
     
+    private Button LoginBtn;
+    private Button CancelBtn;
+    private Button FindBtn;
+    private Button MembershipBtn;
+    
     public void setRoot(Parent root) {
-        this.root = root;
-        
-        comSrv.setMouserBtnCursurEffect(MembershipBtn);
-        comSrv.setMouserBtnCursurEffect(CancelBtn);
-        comSrv.setMouserBtnCursurEffect(FindBtn);
-        comSrv.setMouserBtnCursurEffect(LoginBtn);
+    	this.root = root;
+    	
+    	LoginBtn = (Button) root.lookup("#LoginBtn");
+		comSrv.setMouserBtnCursurEffect(LoginBtn);
+		CancelBtn = (Button) root.lookup("#CancelBtn");
+		comSrv.setMouserBtnCursurEffect(CancelBtn);
+		FindBtn = (Button) root.lookup("#FindBtn");
+		comSrv.setMouserBtnCursurEffect(FindBtn);
+		MembershipBtn = (Button) root.lookup("#MembershipBtn");
+		comSrv.setMouserBtnCursurEffect(MembershipBtn);
+
+
+
+
+    	
     }
     
     public void initialize(final URL arg0, final ResourceBundle arg1) {
