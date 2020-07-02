@@ -42,7 +42,7 @@ public class GameSelectController extends Controller implements Initializable {
 	public void startTask() {
 		updateScore = new Timer();
 		updateScoreTxt = makeTask();
-		updateScore.schedule(updateScoreTxt, 0, 100);
+		updateScore.schedule(updateScoreTxt, 0, 1000);
 	}
 	
 	@Override
