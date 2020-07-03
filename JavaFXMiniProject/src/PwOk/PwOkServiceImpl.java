@@ -60,7 +60,8 @@ public class PwOkServiceImpl implements PwOkService {
 		Button confirmQuizBtn = (Button) pwOkForm.lookup("#confirmQuizBtn");
 
 		if (answerTxt.getText().length() == 0) {
-			comSrv.alertWindow("오류", "오류", AlertType.INFORMATION);
+			comSrv.alertWindow("오류", "내용이 없습니다", AlertType.INFORMATION);
+			return;
 		}
 
 		if (!isComboBox(pwOkForm)) {
