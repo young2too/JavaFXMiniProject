@@ -310,7 +310,7 @@ public class GameViewManager {
 			if(METEOR_RADIUS+PANG_RADIUS>calculateDistance(pang.getLayoutX()+49,	 goldMeteors[i].getLayoutX()+20, pang.getLayoutY()+37, goldMeteors[i].getLayoutY()+20)) {
 				removeLife();
 				setNewElementPosition(goldMeteors[i]);
-			}
+			}//
 		}
 		
 	}
